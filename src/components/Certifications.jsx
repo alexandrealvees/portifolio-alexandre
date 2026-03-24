@@ -7,21 +7,12 @@ import SectionWrapper from './SectionWrapper'
 
 const certifications = [
   {
-    code: 'DCPT',
-    name: 'Desec Certified Penetration Tester',
-    issuer: 'Desec Security',
-    status: 'preparation',
-    color: '#f59e0b',
-    gradient: 'linear-gradient(135deg,#f59e0b,#ef4444)',
-    validateUrl: null,
-  },
-  {
     code: 'eJPTv2',
     name: 'Junior Penetration Tester v2',
     issuer: 'INE Security',
     status: 'active',
-    color: '#10b981',
-    gradient: 'linear-gradient(135deg,#10b981,#00d4ff)',
+    color: '#0ea5e9',
+    gradient: 'linear-gradient(135deg,#0ea5e9,#3b82f6)',
   },
   {
     code: 'CAPT',
@@ -45,7 +36,7 @@ const certifications = [
     issuer: 'Cyber Warfare Labs',
     status: 'active',
     color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
   },
   {
     code: 'WEB-RTA',
@@ -53,7 +44,7 @@ const certifications = [
     issuer: 'Cyber Warfare Labs',
     status: 'active',
     color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
   },
   {
     code: 'CRTA',
@@ -61,7 +52,7 @@ const certifications = [
     issuer: 'Cyber Warfare Labs',
     status: 'active',
     color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
   },
   {
     code: 'CRT-ID',
@@ -69,7 +60,7 @@ const certifications = [
     issuer: 'Cyber Warfare Labs',
     status: 'active',
     color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
   },
   {
     code: 'CRT-COI',
@@ -77,7 +68,7 @@ const certifications = [
     issuer: 'Cyber Warfare Labs',
     status: 'active',
     color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
   },
   {
     code: 'API-RTA',
@@ -85,36 +76,60 @@ const certifications = [
     issuer: 'Cyber Warfare Labs',
     status: 'active',
     color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
   },
   {
     code: 'CNPen',
     name: 'Certified Network Pentester',
     issuer: 'SecOps Group',
     status: 'active',
-    color: '#ec4899',
-    gradient: 'linear-gradient(135deg,#ec4899,#8b5cf6)',
+    color: '#10b981',
+    gradient: 'linear-gradient(135deg,#10b981,#14b8a6)',
   },
   {
     code: 'CAPen',
     name: 'Certified AppSec Pentester',
     issuer: 'SecOps Group',
     status: 'active',
-    color: '#ec4899',
-    gradient: 'linear-gradient(135deg,#ec4899,#8b5cf6)',
+    color: '#10b981',
+    gradient: 'linear-gradient(135deg,#10b981,#14b8a6)',
   },
+  {
+    code: 'AZ-900',
+    name: 'Conceitos básicos do Azure',
+    issuer: 'MICROSOFT',
+    status: 'active',
+    color: '#00a4ef',
+    gradient: 'linear-gradient(135deg,#00a4ef,#3b82f6)',
+  },
+  {
+    code: 'SC-900',
+    name: 'Fundamentos de segurança, conformidade e identidade da Microsoft',
+    issuer: 'MICROSOFT',
+    status: 'active',
+    color: '#00a4ef',
+    gradient: 'linear-gradient(135deg,#00a4ef,#3b82f6)',
+  },
+  {
+    code: 'CLF-002',
+    name: 'Cloud Practitioner',
+    issuer: 'AWS',
+    status: 'active',
+    color: '#ff9900',
+    gradient: 'linear-gradient(135deg,#ff9900,#f97316)',
+  }
 ]
 
 const issuers = [
   {
     name: 'Cyber Warfare Labs',
-    count: 5,
-    gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
+    count: 6,
+    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
   },
   {
     name: 'SecOps Group',
     count: 2,
-    gradient: 'linear-gradient(135deg,#ec4899,#8b5cf6)',
+    gradient: 'linear-gradient(135deg,#10b981,#14b8a6)',
   },
   {
     name: 'Hackviser',
@@ -122,15 +137,20 @@ const issuers = [
     gradient: 'linear-gradient(135deg,#f43f5e,#fb923c)',
   },
   {
-    name: 'INE Security',
-    count: 1,
-    gradient: 'linear-gradient(135deg,#10b981,#00d4ff)',
+    name: 'Microsoft',
+    count: 2,
+    gradient: 'linear-gradient(135deg,#00a4ef,#3b82f6)',
   },
   {
-    name: 'Desec Security',
+    name: 'INE Security',
     count: 1,
-    gradient: 'linear-gradient(135deg,#f59e0b,#ef4444)',
+    gradient: 'linear-gradient(135deg,#0ea5e9,#3b82f6)',
   },
+  {
+    name: 'AWS',
+    count: 1,
+    gradient: 'linear-gradient(135deg,#ff9900,#f97316)',
+  }
 ]
 
 function CertCard({ cert, index }) {

@@ -4,18 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiArrowLeft, FiExternalLink, FiImage, FiFilter, FiCalendar } from 'react-icons/fi'
 import GrainOverlay from '../components/GrainOverlay'
 
-/*
-  ┌──────────────────────────────────────────────────────────────────┐
-  │  COMO ADICIONAR SUAS CERTIFICAÇÕES:                              │
-  │                                                                  │
-  │  1. Salve a print em:  src/images/certs/nome-do-arquivo.jpg      │
-  │  2. Importe no topo deste arquivo:                               │
-  │       import certCNPen from '../images/certs/cnpen.jpg'          │
-  │  3. Adicione o campo  image: certCNPen  no objeto da cert abaixo │
-  └──────────────────────────────────────────────────────────────────┘
-*/
-
-// ── Importe suas certificações aqui ──────────────────────────────
 import imgAdrts from '../images/certs/cwl/adrts.png'
 import imgApi from '../images/certs/cwl/api.png'
 import imgCrt from '../images/certs/cwl/crt.png'
@@ -27,6 +15,9 @@ import imgCwse from '../images/certs/hackviser/cwse.png'
 import imgEjpt from '../images/certs/ine/ejpt.png'
 import imgCapen from '../images/certs/thesecgroup/capen.jpg'
 import imgCnpen from '../images/certs/thesecgroup/cnpen.jpg'
+import imgAz900 from '../images/certs/microsoft/az900.jpg'
+import imgSc900 from '../images/certs/microsoft/sc900.png'
+import imgAws from '../images/certs/aws/aws.jpg'
 
 
 const ORGS = {
@@ -36,6 +27,8 @@ const ORGS = {
   INE:    { label: 'INE Security',       color: '#10b981' },
   DESEC:  { label: 'Desec Security',     color: '#f59e0b' },
   HACKVISER: { label: 'Hackviser',       color: '#f43f5e' },
+  MICROSOFT: { label: 'Microsoft',       color: '#1621b8' },
+  AWS:      { label: 'Aws',              color: '#678685' }
 }
 
 const certifications = [
@@ -150,14 +143,34 @@ const certifications = [
     status: 'active',
   },
   {
-    id: 'dcpt',
-    code: 'DCPT',
-    name: 'Desec Certified Penetration Tester',
-    org: 'DESEC',
+    id: 'az900',
+    code: 'AZ-900',
+    name: 'Conceitos básicos do Azure',
+    org: 'MICROSOFT',
     date: null,
-    image: null,
-    validateUrl: '#',
-    status: 'preparation',
+    image: imgAz900,
+    validateUrl: 'https://learn.microsoft.com/api/credentials/share/pt-br/AlexandreAlves-3748/908D6850A5ECEE84?sharingId=2D21C3AF90AFED56',
+    status: 'active',
+  },
+    {
+    id: 'sc900',
+    code: 'SC-900',
+    name: 'Fundamentos de segurança, conformidade e identidade da Microsoft',
+    org: 'MICROSOFT',
+    date: null,
+    image: imgSc900,
+    validateUrl: 'https://learn.microsoft.com/api/credentials/share/pt-br/AlexandreAlves-3748/4F0A7519010D1782?sharingId=2D21C3AF90AFED56',
+    status: 'active',
+  },
+   {
+    id: 'aws',
+    code: 'AWS',
+    name: 'Certified Cloud Practitioner',
+    org: 'AWS',
+    date: null,
+    image: imgAws,
+    validateUrl: 'https://www.credly.com/badges/49047fd6-47a3-4d4a-9809-03ae0ec8a919/linked_in_profile',
+    status: 'active',
   },
 ]
 

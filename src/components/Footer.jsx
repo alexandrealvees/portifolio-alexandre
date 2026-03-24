@@ -34,7 +34,7 @@ export default function Footer() {
           </div>
 
           <p className="text-xs text-gray-600 flex items-center gap-1">
-            Tron Security <GiRobotGolem className="text-neon-purple" size={18} /> &copy; {new Date().getFullYear()}
+          <GiRobotGolem className="text-neon-purple" size={20} /> Tron Security &copy; {new Date().getFullYear()} <GiRobotGolem className="text-neon-purple" size={20} />
             
           </p>
         </div>
