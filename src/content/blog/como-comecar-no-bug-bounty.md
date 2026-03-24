@@ -1,39 +1,74 @@
 ---
-title: "Como começar no Bug Bounty em 2025"
+title: "Bug Bounty em 2025: Guia Realista para Começar do Zero ao Primeiro Bug"
 category: "AppSec"
 date: "Mar 2025"
 image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80"
 ---
 
-# Introdução ao Bug Bounty
+# Bug Bounty em 2025: Por onde começar (de verdade)
 
-O Bug Bounty tem crescido exponencialmente nos últimos anos. Com mais empresas adotando programas de recompensas, as oportunidades para pesquisadores de segurança independentes nunca foram tão boas.
+Bug Bounty não é só “caçar bugs”.  
+É **pensar como atacante, entender sistemas complexos e encontrar o que ninguém viu**.
 
-Neste artigo, vamos explorar os primeiros passos que você deve tomar se quiser entrar no mundo do Bug Bounty e encontrar suas primeiras vulnerabilidades.
+Em 2025, o cenário está mais competitivo — mas também **mais acessível do que nunca**.  
+Empresas expõem APIs, microserviços, aplicações mobile… e isso abre uma superfície enorme pra exploração.
 
-## 1. Fundamentos são essenciais
+Se você quer sair do zero e chegar no seu primeiro report válido, esse é o caminho.
 
-Antes de começar a procurar bugs em aplicações de grandes empresas, você precisa entender como essas aplicações funcionam. Algumas áreas de estudo obrigatórias incluem:
+---
 
-- **Redes:** Entender HTTP/HTTPS, TCP/IP, DNS.
-- **Desenvolvimento Web:** Saber como HTML, CSS e JavaScript interagem. Entender o básico de linguagens de backend (PHP, Python, Node.js) também ajuda muito.
-- **Ferramentas:** Burp Suite é o seu melhor amigo. Aprenda a interceptar e manipular requisições.
+## 1. Mentalidade > Ferramentas
 
-## 2. Metodologia de Reconhecimento
+Antes de sair rodando scanner, entenda isso:
 
-O reconhecimento (Recon) é onde a mágica acontece. A maioria dos bugs não está na página principal do site alvo, mas em subdomínios esquecidos ou APIs antigas.
+> Bug Bounty não recompensa quem roda ferramenta — recompensa quem **entende comportamento**.
+
+Você precisa dominar:
+
+- **Web (essencial)**
+  - HTTP/HTTPS na prática (headers, cookies, cache, auth)
+  - Como o browser realmente funciona
+
+- **Backend básico**
+  - Fluxo de APIs (REST/JSON)
+  - Autenticação (JWT, sessões, tokens)
+
+- **Lógica de aplicação**
+  - Onde estão as decisões críticas?
+  - Onde o sistema confia no usuário?
+
+ *A maioria dos bugs críticos não é técnica — é lógica.*
+
+---
+
+## 2. Setup do Hacker (mínimo viável)
+
+Esquece 50 ferramentas. Começa com isso:
+
+- **Burp Suite** → interceptação, repeater, intruder
+- **Browser + DevTools**
+- **subfinder / assetfinder** → recon inicial
+- **ffuf** → fuzzing
+
+Se você domina **Burp + lógica**, já tá na frente de muita gente.
+
+---
+
+## 3. Recon: onde os bugs realmente estão
+
+A homepage é só fachada.
+
+Os bugs vivem em:
+- APIs esquecidas
+- subdomínios antigos
+- endpoints internos expostos
+- versões legacy
+
+Exemplo real de recon:
 
 ```bash
-# Exemplo de busca de subdomínios com o subfinder
-subfinder -d target.com -all -recursive > subdomains.txt
-```
+subfinder -d target.com -all -recursive | tee subdomains.txt
 
-Encontrar a superfície de ataque que outros pesquisadores ignoraram é a chave para o sucesso em programas públicos.
+cat subdomains.txt | httpx -silent -o alive.txt
 
-## 3. Pratique em ambientes controlados
-
-Não vá direto para os programas do HackerOne ou Bugcrowd sem antes praticar. Plataformas como PortSwigger Web Security Academy, HackTheBox e TryHackMe oferecem laboratórios excelentes para você testar suas habilidades legalmente e aprender a explorar vulnerabilidades específicas como XSS, SSRF e IDOR.
-
-## Conclusão
-
-Bug Bounty requer paciência e persistência. Você vai passar dias sem encontrar nada, mas a recompensa (não apenas financeira, mas o aprendizado) vale a pena. Foco nos fundamentos e boa caçada!
+ffuf -u https://target.com/FUZZ -w wordlist.txt

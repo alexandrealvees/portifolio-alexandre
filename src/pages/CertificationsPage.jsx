@@ -28,7 +28,7 @@ const ORGS = {
   DESEC:  { label: 'Desec Security',     color: '#f59e0b' },
   HACKVISER: { label: 'Hackviser',       color: '#f43f5e' },
   MICROSOFT: { label: 'Microsoft',       color: '#1621b8' },
-  AWS:      { label: 'Aws',              color: '#678685' }
+  AWS:      { label: 'AWS',              color: '#678685' }
 }
 
 const certifications = [
@@ -145,7 +145,7 @@ const certifications = [
   {
     id: 'az900',
     code: 'AZ-900',
-    name: 'Conceitos básicos do Azure',
+    name: 'Fundamentos do Microsoft Azure',
     org: 'MICROSOFT',
     date: null,
     image: imgAz900,
@@ -260,25 +260,24 @@ function CertCard({ cert, index }) {
       </div>
 
       {/* ── info ── */}
-      <div className="p-4 flex flex-col gap-1 flex-1">
-        <div className="flex items-start justify-between gap-2">
-          <div>
-            <p className="text-white font-display font-semibold text-sm leading-snug group-hover:transition-colors"
-              style={{ transition: 'color 0.2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = org.color}
-              onMouseLeave={e => e.currentTarget.style.color = '#fff'}
-            >
-              {cert.code} – {cert.name}
-            </p>
-          </div>
+      <div className="p-4 flex flex-col justify-between flex-1">
+        <div className="flex items-start gap-2 mb-3">
+          <p className="text-white font-display font-semibold text-sm leading-snug group-hover:transition-colors line-clamp-2"
+            style={{ transition: 'color 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = org.color}
+            onMouseLeave={e => e.currentTarget.style.color = '#fff'}
+            title={`${cert.code} – ${cert.name}`}
+          >
+            {cert.code} – {cert.name}
+          </p>
         </div>
 
-        <div className="flex items-center justify-between mt-2">
-          <span className="text-[11px] font-mono" style={{ color: org.color + 'cc' }}>
+        <div className="flex items-center justify-between mt-auto">
+          <span className="text-[11px] font-mono truncate mr-2" style={{ color: org.color + 'cc' }}>
             {org.label}
           </span>
           {cert.date && (
-            <span className="flex items-center gap-1 text-[10px] font-mono text-gray-600">
+            <span className="flex items-center gap-1 text-[10px] font-mono text-gray-600 flex-shrink-0">
               <FiCalendar size={10} />
               {cert.date}
             </span>
@@ -468,6 +467,7 @@ export default function CertificationsPage() {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
             gap: 20,
+            alignItems: 'start', // Impede que os cards estiquem para igualar a altura da linha
           }}
         >
           <AnimatePresence mode="popLayout">
