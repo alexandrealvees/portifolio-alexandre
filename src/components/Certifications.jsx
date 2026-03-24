@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
-import { FiAward, FiExternalLink, FiCheckCircle, FiClock, FiArrowRight } from 'react-icons/fi'
+import { FiAward, FiCheckCircle, FiClock, FiArrowRight } from 'react-icons/fi'
 import SectionWrapper from './SectionWrapper'
 
 
@@ -120,38 +120,33 @@ const certifications = [
   }
 ]
 
-const issuers = [
-  {
-    name: 'Cyber Warfare Labs',
-    count: 6,
-    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  },
-  {
-    name: 'SecOps Group',
-    count: 2,
-    gradient: 'linear-gradient(135deg,#10b981,#14b8a6)',
-  },
-  {
-    name: 'Hackviser',
-    count: 2,
-    gradient: 'linear-gradient(135deg,#f43f5e,#fb923c)',
-  },
-  {
-    name: 'Microsoft',
-    count: 2,
-    gradient: 'linear-gradient(135deg,#00a4ef,#3b82f6)',
-  },
-  {
-    name: 'INE Security',
-    count: 1,
-    gradient: 'linear-gradient(135deg,#0ea5e9,#3b82f6)',
-  },
-  {
-    name: 'AWS',
-    count: 1,
-    gradient: 'linear-gradient(135deg,#ff9900,#f97316)',
+const issuerStyles = {
+  'Cyber Warfare Labs': 'linear-gradient(135deg,#8b5cf6,#d946ef)',
+  'SecOps Group': 'linear-gradient(135deg,#10b981,#14b8a6)',
+  'Hackviser': 'linear-gradient(135deg,#f43f5e,#fb923c)',
+  'MICROSOFT': 'linear-gradient(135deg,#00a4ef,#3b82f6)',
+  'INE Security': 'linear-gradient(135deg,#0ea5e9,#3b82f6)',
+  'AWS': 'linear-gradient(135deg,#ff9900,#f97316)',
+}
+
+// Gera a lista de emissores dinamicamente com base no array de certificações
+const issuersMap = certifications.reduce((acc, cert) => {
+  const name = cert.issuer === 'MICROSOFT' ? 'Microsoft' : cert.issuer;
+  const key = cert.issuer;
+  
+  if (!acc[key]) {
+    acc[key] = {
+      name: name,
+      count: 0,
+      gradient: issuerStyles[key] || 'linear-gradient(135deg,#6b7280,#9ca3af)', // fallback
+    }
   }
-]
+  acc[key].count += 1;
+  return acc;
+}, {})
+
+// Converte o mapa de volta para array e ordena por quantidade (opcional)
+const issuers = Object.values(issuersMap).sort((a, b) => b.count - a.count)
 
 function CertCard({ cert, index }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })
@@ -204,21 +199,6 @@ function CertCard({ cert, index }) {
         </div>
 
         <p className="text-gray-500 text-xs mt-1">{cert.issuer}</p>
-
-        {cert.validateUrl && (
-          <a
-            href={cert.validateUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 mt-2 text-[11px] font-mono transition-colors duration-200"
-            style={{ color: 'rgba(255,255,255,0.2)' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#00d4ff'}
-            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.2)'}
-          >
-            <FiExternalLink size={11} />
-            Validar credencial
-          </a>
-        )}
       </div>
     </motion.div>
   )

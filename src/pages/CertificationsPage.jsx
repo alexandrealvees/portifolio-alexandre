@@ -178,6 +178,7 @@ const certifications = [
 
 function CertCard({ cert, index }) {
   const [hovered, setHovered] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
   const org = ORGS[cert.org]
 
   return (
@@ -189,7 +190,8 @@ function CertCard({ cert, index }) {
       transition={{ delay: index * 0.05, duration: 0.4 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group rounded-2xl overflow-hidden flex flex-col"
+      onClick={() => setIsExpanded(!isExpanded)}
+      className="group rounded-2xl overflow-hidden flex flex-col cursor-pointer"
       style={{
         background: 'rgba(255,255,255,0.03)',
         border: `1px solid ${hovered ? org.color + '50' : 'rgba(255,255,255,0.07)'}`,
@@ -240,23 +242,19 @@ function CertCard({ cert, index }) {
           </div>
         )}
 
-        {/* hover overlay com link */}
+        {/* hover overlay instrução de clique */}
         <AnimatePresence>
-          {hovered && cert.validateUrl && cert.status !== 'preparation' && (
-            <motion.a
-              href={cert.validateUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+          {hovered && !isExpanded && cert.validateUrl && cert.status !== 'preparation' && (
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute inset-0 flex items-center justify-center gap-2 text-white text-xs font-semibold"
+              className="absolute inset-0 flex items-center justify-center text-white text-xs font-semibold"
               style={{ background: `${org.color}30`, backdropFilter: 'blur(4px)' }}
             >
-              <FiExternalLink size={16} />
-              Validar credencial
-            </motion.a>
+              Clique para expandir
+            </motion.div>
           )}
         </AnimatePresence>
       </div>
@@ -287,6 +285,46 @@ function CertCard({ cert, index }) {
           )}
         </div>
       </div>
+
+      {/* ── área expandida (acordeão) ── */}
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="px-4 pb-4">
+              {cert.validateUrl && cert.status !== 'preparation' && (
+                <a
+                  href={cert.validateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300"
+                  style={{
+                    background: `linear-gradient(135deg, ${org.color}40, rgba(255,255,255,0.05))`,
+                    border: `1px solid ${org.color}60`,
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = org.color;
+                    e.currentTarget.style.boxShadow = `0 0 20px ${org.color}50`;
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = `linear-gradient(135deg, ${org.color}40, rgba(255,255,255,0.05))`;
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
+                >
+                  <FiExternalLink size={16} />
+                  Validar credencial
+                </a>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 }
