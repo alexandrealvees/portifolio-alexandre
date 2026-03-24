@@ -39,12 +39,18 @@ export default function Hero() {
     >
       {/* ── NAVBAR ─────────────────────────────────────────────── */}
       <nav style={{
-        position: 'relative',
-        zIndex: 30,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '20px 56px',
+        background: 'rgba(3,0,20,0.85)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(255,255,255,0.05)',
       }}>
         {/* Espaçador invisível para manter os ícones sociais à direita e o menu no centro (se desejado), ou podemos deixar os links à esquerda */}
         <div></div>
@@ -95,6 +101,7 @@ export default function Hero() {
 
       {/* ── MARQUEE SUPERIOR ───────────────────────────────────── */}
       <div style={{
+        marginTop: '65px', // compensa a altura da navbar fixa
         position: 'relative', zIndex: 20, overflow: 'hidden',
         padding: '7px 0',
         background: 'linear-gradient(90deg,#6d28d9,#0ea5e9,#6d28d9)',
