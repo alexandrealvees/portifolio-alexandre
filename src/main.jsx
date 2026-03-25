@@ -6,7 +6,7 @@ import CertificationsPage from './pages/CertificationsPage.jsx'
 import BlogPostPage from './pages/BlogPostPage.jsx'
 import BlogPage from './pages/BlogPage.jsx'
 import CurriculumPage from './pages/CurriculumPage.jsx'
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import './index.css'
 
 createRoot(document.getElementById('root')).render(
