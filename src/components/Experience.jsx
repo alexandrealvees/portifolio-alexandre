@@ -5,7 +5,7 @@ import SectionWrapper from './SectionWrapper'
 const experiences = [
   {
     role: 'Engenheiro de Segurança (Offensive-Focused)',
-    company: 'LOQED SYSTEMS',
+    company: 'Loqed Systems',
     period: '2024 — Presente',
     description: 'Conduzir avaliações de segurança em novos produtos e nas mudanças de requisitos de negócios em toda a organização. Correlacionar achados de segurança de múltiplas fontes com as necessidades do negócio, transformando avaliações de risco e insights de prevenção de fraude em correções que realmente fazem a diferença. Criar padrões de segurança e guias de implementação para o rollout da plataforma interna da Cielo.',
     techs: ['Security Assessment', 'Risk Analysis', 'Fraud Prevention'],
@@ -13,7 +13,7 @@ const experiences = [
   },
   {
     role: 'Analista de Segurança II',
-    company: 'LOQED SYSTEMS',
+    company: 'Loqed Systems',
     period: '2023 — 2024',
     description: 'Pentests e análises de segurança em Web, API e mobile (Android/iOS). Elaboração de relatórios técnicos e executivos. Participação em sprints com squads de desenvolvimento (DevSecOps).',
     techs: ['Pentesting', 'Web Security', 'API Security', 'Mobile Security', 'DevSecOps'],
@@ -21,7 +21,7 @@ const experiences = [
   },
   {
     role: 'Engenheiro de Software',
-    company: 'LOQED SYSTEMS',
+    company: 'Loqed Systems',
     period: '2024 — Presente',
     description: 'Engenheiro de Software especializado em Java e Spring Framework, atuando no desenvolvimento de APIs RESTful e microserviços com foco em performance, escalabilidade e segurança. Experiência em integração de sistemas (REST/SOAP), mensageria (JMS) e bancos relacionais (Oracle, PostgreSQL, MySQL), aplicando boas práticas de arquitetura e engenharia em ambientes críticos.',
     techs: ['Java', 'SpringBoot', 'Postgres', 'Hibernate', 'SpringSecurity'],
@@ -29,18 +29,18 @@ const experiences = [
   },
   {
     role: 'BugHunter',
-    company: 'HUNTERSPAY',
+    company: 'HuntersPay',
     period: '2024 — Presente',
     description: 'Bug bounty hunter focado na identificação e exploração de vulnerabilidades em aplicações Web, APIs e plataformas mobile. Atuação em programas públicos e privados, com descoberta de falhas críticas como IDOR, SSRF, XSS e falhas de autenticação.',
-    techs: ['Bug Bounty', 'IDOR', 'SSRF', 'XSS', 'Authentication'],
+    techs: ['Bug Bounty', 'IDOR', 'SSRF', 'XSS', 'Authentication','Vulnerabilidades'],
     type: 'full-time',
   },
   {
-    role: 'Senior Software Engineer',
-    company: 'Caixa Econômica Federal, Banco do Brasil, Sicoob e Tribunal Superior Eleitoral',
-    period: '2020 — 2024',
+    role: 'Desenvolvedor de Software',
+    company: 'Caixa Econômica Federal, Banco do Brasil, Sicoob, Tribunal Superior Eleitoral e Exército Brasileiro',
+    period: '2019 — 2024',
     description: 'Liderança técnica em projetos de microservices com Java e SpringBoot. Responsável pela arquitetura de sistemas distribuídos processando +10M requests/dia. Redução de 40% no tempo de deploy com otimização do pipeline CI/CD.',
-    techs: ['Java', 'Angular', 'AWS', 'Kubernetes', 'PostgreSQL'],
+    techs: ['Java', 'Angular', 'AWS', 'Kubernetes', 'PostgreSQL', 'AWS'],
     type: 'full-time',
   },
 ]

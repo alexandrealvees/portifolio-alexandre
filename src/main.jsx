@@ -6,6 +6,7 @@ import CertificationsPage from './pages/CertificationsPage.jsx'
 import BlogPostPage from './pages/BlogPostPage.jsx'
 import BlogPage from './pages/BlogPage.jsx'
 import CurriculumPage from './pages/CurriculumPage.jsx'
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './index.css'
 
 createRoot(document.getElementById('root')).render(
@@ -18,6 +19,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
       </Routes>
+
+      <SpeedInsights />
     </BrowserRouter>
   </StrictMode>,
 )
