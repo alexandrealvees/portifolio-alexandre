@@ -1,16 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FiGithub, FiLinkedin, FiMail, FiUser } from 'react-icons/fi'
+import { GiRobotGolem } from "react-icons/gi";
 import bgImage from '../images/background.jpg'
-
-/*
-  ┌──────────────────────────────────────────────────────────┐
-  │  Para adicionar sua foto:                                │
-  │  1. Salve como  src/images/avatar.jpg                    │
-  │  2. Descomente a linha abaixo                            │
-  │  3. Apague a linha:  const avatarImage = null            │
-  └──────────────────────────────────────────────────────────┘
-*/
-// import avatarImage from '../images/avatar.jpg'
 import avatarImage from '../images/profile/profile.png'
 
 const marqueeTextTop = Array(10).fill('RED TEAM • PENTESTING • CYBER THREAT • MALWARE ').join('')
@@ -37,7 +28,6 @@ export default function Hero() {
         backgroundColor: '#030014',
       }}
     >
-      {/* ── NAVBAR ─────────────────────────────────────────────── */}
       <nav style={{
         position: 'fixed',
         top: 0,
@@ -52,7 +42,6 @@ export default function Hero() {
         backdropFilter: 'blur(20px)',
         borderBottom: '1px solid rgba(255,255,255,0.05)',
       }}>
-        {/* Espaçador invisível para manter os ícones sociais à direita e o menu no centro (se desejado), ou podemos deixar os links à esquerda */}
         <div></div>
 
         <div style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
@@ -85,6 +74,7 @@ export default function Hero() {
         </div>
 
         <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+           <GiRobotGolem className="text-neon-purple" size={20} />
           {[
             { icon: FiGithub, href: 'https://github.com/alexandrealvees', label: 'GitHub' },
             { icon: FiLinkedin, href: 'https://linkedin.com/in/alexandre-alvees', label: 'LinkedIn' },
@@ -96,6 +86,8 @@ export default function Hero() {
               onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
             ><Icon size={18} /></a>
           ))}
+            <GiRobotGolem className="text-neon-purple" size={20} />
+
         </div>
       </nav>
 

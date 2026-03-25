@@ -1,4 +1,4 @@
-import { FiGithub, FiLinkedin, FiHeart } from 'react-icons/fi'
+import { FiGithub, FiLinkedin } from 'react-icons/fi'
 import { GiRobotGolem } from "react-icons/gi";
 
 
