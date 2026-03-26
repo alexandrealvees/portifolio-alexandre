@@ -1,21 +1,28 @@
 import { Link } from 'react-router-dom'
-import { FiGithub, FiLinkedin, FiMail, FiUser } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiMail, FiUser, FiGlobe } from 'react-icons/fi'
 import { GiRobotGolem } from "react-icons/gi";
+import { useTranslation } from 'react-i18next';
 import bgImage from '../images/background.jpg'
 import avatarImage from '../images/profile/profile.png'
 
 const marqueeTextTop = Array(10).fill('RED TEAM • PENTESTING • CYBER THREAT • MALWARE ').join('')
 const marqueeTextBot = Array(10).fill('CYBER THREAT • FORENSICS • ENGENHARIA DE SOFTWARE • ').join('')
 
-const NAV_LINKS = [
-  { label: 'Home', id: 'home' },
-  { label: 'Sobre', id: 'sobre' },
-  { label: 'Skills', id: 'habilidades' },
-  { label: 'Experiência', id: 'experience' },
-  { label: 'Certificações', id: 'certificacoes' }
-]
-
 export default function Hero() {
+  const { t, i18n } = useTranslation();
+
+  const NAV_LINKS = [
+    { label: t('nav.home'), id: 'home' },
+    { label: t('nav.about'), id: 'sobre' },
+    { label: t('nav.skills'), id: 'habilidades' },
+    { label: t('nav.experience'), id: 'experience' },
+    { label: t('nav.certifications'), id: 'certificacoes' }
+  ]
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language.startsWith('pt') ? 'en' : 'pt';
+    i18n.changeLanguage(newLang);
+  };
   return (
     <section
       id="home"
@@ -62,7 +69,7 @@ export default function Hero() {
           }}
             onMouseEnter={e => e.target.style.color = '#fff'}
             onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.6)'}
-          >Blog</Link>
+          >{t('nav.blog')}</Link>
           <Link to="/curriculum" style={{
             color: 'rgba(255,255,255,0.6)', textDecoration: 'none',
             fontSize: 11, fontWeight: 600, letterSpacing: '0.18em',
@@ -70,7 +77,7 @@ export default function Hero() {
           }}
             onMouseEnter={e => e.target.style.color = '#fff'}
             onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.6)'}
-          >Curriculum</Link>
+          >{t('nav.curriculum')}</Link>
         </div>
 
         <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
@@ -86,7 +93,26 @@ export default function Hero() {
               onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
             ><Icon size={18} /></a>
           ))}
-            <GiRobotGolem className="text-neon-purple" size={20} />
+          
+          {/* Botão de Tradução */}
+          <button 
+            onClick={toggleLanguage}
+            title={i18n.language.startsWith('pt') ? "Translate to English" : "Traduzir para Português"}
+            style={{ 
+              background: 'none', border: 'none', padding: 0, cursor: 'pointer',
+              color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s',
+              display: 'flex', alignItems: 'center', marginLeft: 4
+            }}
+            onMouseEnter={e => e.currentTarget.style.color = '#00d4ff'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
+          >
+            <FiGlobe size={18} />
+            <span style={{ fontSize: 10, marginLeft: 4, fontWeight: 'bold', fontFamily: 'monospace' }}>
+              {i18n.language.startsWith('pt') ? 'EN' : 'PT'}
+            </span>
+          </button>
+
+          <GiRobotGolem className="text-neon-purple" size={20} />
 
         </div>
       </nav>
@@ -150,7 +176,7 @@ export default function Hero() {
               color: '#00d4ff', textTransform: 'uppercase',
             }}>
               <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', animation: 'pulse 1.5s infinite' }} />
-              Disponível para projetos
+              {t('hero.badge')}
             </div>
 
             {/* nome */}
@@ -181,7 +207,7 @@ export default function Hero() {
               backdropFilter: 'blur(12px)',
             }}>
               <p style={{ color: 'rgba(255,255,255,0.75)', lineHeight: 1.7, fontSize: 14, margin: 0 }}>
-                Sou especializado em identificar e explorar vulnerabilidades em aplicações, redes e infraestruturas. Utilizo técnicas avançadas de Red Team e Pentest para simular ataques reais e fortalecer a postura de segurança das organizações.
+                {t('hero.title')}
               </p>
             </div>
 
@@ -190,7 +216,7 @@ export default function Hero() {
               fontSize: 10, fontFamily: 'monospace', letterSpacing: '0.25em',
               textTransform: 'uppercase', color: '#8b5cf6', marginBottom: 28,
             }}>
-              Software Engineer · Security · Cloud · AI
+              {t('hero.subtitle')}
             </p>
 
             
@@ -239,7 +265,7 @@ export default function Hero() {
                       <FiUser size={30} color="rgba(139,92,246,0.8)" />
                     </div>
                     <p style={{ fontSize: 11, fontFamily: 'monospace', letterSpacing: '0.15em', color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', margin: 0 }}>
-                      Sua foto aqui
+                      {t('hero.photo')}
                     </p>
                     <p style={{ fontSize: 9, fontFamily: 'monospace', color: 'rgba(255,255,255,0.12)', margin: 0 }}>
                       src/images/avatar.jpg

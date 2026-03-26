@@ -1,0 +1,263 @@
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+
+const resources = {
+  pt: {
+    translation: {
+      "nav.home": "Home",
+      "nav.about": "Sobre",
+      "nav.skills": "Skills",
+      "nav.experience": "Experiência",
+      "nav.certifications": "Certificações",
+      "nav.blog": "Blog",
+      "nav.curriculum": "Curriculum",
+      "hero.title": "Sou especializado em identificar e explorar vulnerabilidades em aplicações, redes e infraestruturas. Utilizo técnicas avançadas de Red Team e Pentest para simular ataques reais e fortalecer a postura de segurança das organizações.",
+      "hero.subtitle": "Software Engineer · Security · Cloud · AI",
+      "hero.badge": "Disponível para projetos",
+      "hero.photo": "Sua foto aqui",
+      
+      // About
+      "about.title_label": "SOBRE MIM",
+      "about.title_main": "Mentalidade",
+      "about.title_highlight": "Ofensiva",
+      "about.p1": "Como profissional de cibersegurança, dedico minha carreira a entender como sistemas são construídos para descobrir como podem ser quebrados. Meu foco é antecipar ameaças antes que elas aconteçam.",
+      "about.p2": "Trabalho realizando testes de invasão e simulações de adversários, ajudando empresas a fechar brechas críticas. Acredito que a melhor defesa começa com um ataque bem executado e planejado.",
+      "about.stat1_value": "3+",
+      "about.stat1_label": "Anos de experiência",
+      "about.stat2_value": "15+",
+      "about.stat2_label": "Certificações na área",
+      "about.stat3_value": "100%",
+      "about.stat3_label": "Comprometimento",
+      "about.contact_btn": "Entrar em Contato",
+
+      // Certifications
+      "certs.title_label": "CERTIFICAÇÕES",
+      "certs.title_main": "Certificações",
+      "certs.title_highlight": "Relevantes",
+      "certs.description": "Credenciais emitidas pelas principais autoridades em segurança ofensiva do mercado.",
+      "certs.issuers_title": "Entidades Emissoras",
+      "certs.view_all_btn": "🎓 Ver todas as certificações",
+      "certs.status_prep": "Em prep.",
+      "certs.status_active": "Ativo",
+      "certs.validate_link": "Validar credencial oficial",
+      "certs.no_image": "Sem imagem disponível",
+
+      // Interests
+      "interests.title_label": "INTERESSES",
+      "interests.title_main": "Áreas de",
+      "interests.title_highlight": "Interesse",
+      "interests.description": "Domínios onde concentro pesquisa, prática e desenvolvimento contínuo dentro do ecossistema de cibersegurança.",
+      "interests.i1_title": "Red Teaming & Emulação de Ameaças",
+      "interests.i1_desc": "Simulações realistas de adversários avançados (APT), emulação de TTPs com base no MITRE ATT&CK e exercícios de purple team para elevar a maturidade defensiva.",
+      "interests.i2_title": "Segurança de APIs e AppSec",
+      "interests.i2_desc": "Análise de segurança em APIs REST e GraphQL, revisão de código com foco em vulnerabilidades OWASP Top 10, SAST/DAST e integração de segurança no ciclo de desenvolvimento.",
+      "interests.i3_title": "IA Aplicada à Segurança Cibernética",
+      "interests.i3_desc": "Uso de machine learning e LLMs em detecção de ameaças, automação de análise de malware, geração de payloads inteligentes e pesquisa em IA ofensiva e defensiva.",
+      "interests.i4_title": "Threat Hunting e CTI",
+      "interests.i4_desc": "Caça proativa a ameaças em endpoints e redes, análise de Cyber Threat Intelligence, correlação de IOCs e TTPs, e suporte a operações de CTEM.",
+      "interests.i5_title": "Pentest em Cloud e Mobile",
+      "interests.i5_desc": "Testes de intrusão em infraestruturas AWS/GCP/Azure, aplicações Android e iOS com análise estática e dinâmica, e auditoria de contratos inteligentes.",
+      "interests.i6_title": "Arquitetura de Software e Desenvolvimento Seguro",
+      "interests.i6_desc": "Design de sistemas resilientes com security-by-design, modelagem de ameaças (STRIDE/PASTA), DevSecOps e implementação de controles de segurança em pipelines CI/CD.",
+
+      // TechSkills
+      "skills.title_label": "HABILIDADES",
+      "skills.title_main": "Arsenal",
+      "skills.title_highlight": "Técnico",
+      "skills.description": "Ferramentas, linguagens e plataformas que utilizo diariamente para descobrir vulnerabilidades e conduzir operações ofensivas.",
+      "skills.tools": "Ferramentas",
+      "skills.languages": "Linguagens",
+      "skills.methodologies": "Metodologias",
+      "skills.specialties": "Especialidades",
+      "skills.meth1_desc": "Principais vulnerabilidades em aplicações web e APIs",
+      "skills.meth2_desc": "Penetration Testing Execution Standard — ciclo completo",
+      "skills.meth3_desc": "Framework de TTPs de adversários reais",
+      "skills.meth4_desc": "Reconhecimento → Exploração → Pós-exploração → Evasão",
+      "skills.spec1": "Pentest de APIs",
+      "skills.spec2": "Pentest Web",
+      "skills.spec3": "Pentest de Infra",
+      "skills.spec4": "Engenharia Social",
+      "skills.spec5": "Red Team",
+      "skills.spec6": "APT Simulation",
+      "skills.spec7": "Arquitetura de Software",
+      "skills.spec8": "Desenvolvimento Seguro & Escalável",
+
+      // Education
+      "edu.title_label": "FORMAÇÃO",
+      "edu.title_main": "Formação",
+      "edu.title_highlight": "Acadêmica",
+      "edu.description": "Trajetória de formação contínua em engenharia, segurança e ciência de dados.",
+      "edu.status_concluded": "Concluído",
+      "edu.status_progress": "Em andamento",
+      "edu.stat1_value": "5",
+      "edu.stat1_label": "Títulos acadêmicos",
+      "edu.stat2_value": "4",
+      "edu.stat2_label": "Pós-graduações",
+      "edu.stat3_value": "10+",
+      "edu.stat3_label": "Anos de estudo",
+      "edu.type_postgrad": "Pós-graduação",
+      "edu.type_grad": "Graduação",
+
+      // Blog
+      "blog.title_label": "BLOG",
+      "blog.title_main": "Últimas",
+      "blog.title_highlight": "Publicações",
+      "blog.description": "Compartilhando conhecimento, writeups e pesquisas sobre segurança ofensiva.",
+      "blog.read_more": "Ler artigo completo",
+      "blog.read_short": "Ler",
+      "blog.view_all": "Todos os Posts",
+
+      // Experience
+      "exp.title_label": "CARREIRA",
+      "exp.title_main": "Experiência",
+      "exp.title_highlight": "Profissional",
+      "exp.present": "até o momento",
+      "exp.job1_role": "Engenheiro de Segurança (Offensive-Focused)",
+      "exp.job1_desc": "Conduzir avaliações de segurança em novos produtos e nas mudanças de requisitos de negócios em toda a organização. Correlacionar achados de segurança de múltiplas fontes com as necessidades do negócio, transformando avaliações de risco e insights de prevenção de fraude em correções que realmente fazem a diferença. Criar padrões de segurança e guias de implementação para o rollout da plataforma interna da Cielo.",
+      "exp.job2_role": "Analista de Segurança II",
+      "exp.job2_desc": "Pentests e análises de segurança em Web, API e mobile (Android/iOS). Elaboração de relatórios técnicos e executivos. Participação em sprints com squads de desenvolvimento (DevSecOps).",
+      "exp.job3_role": "Engenheiro de Software",
+      "exp.job3_desc": "Desenvolvimento e arquitetura de soluções seguras desde o design. Integração de práticas de segurança no ciclo de vida do desenvolvimento de software.",
+      "exp.job4_role": "BugHunter",
+      "exp.job4_desc": "Bug bounty hunter focado na identificação e exploração de vulnerabilidades em aplicações Web, APIs e plataformas mobile. Atuação em programas públicos e privados, com descoberta de falhas críticas como IDOR, SSRF, XSS e falhas de autenticação.",
+      "exp.job5_role": "Desenvolvedor de Software",
+      "exp.job5_desc": "Liderança técnica em projetos de microservices com Java e SpringBoot. Responsável pela arquitetura de sistemas distribuídos processando +10M requests/dia. Redução de 40% no tempo de deploy com otimização do pipeline CI/CD.",
+    }
+  },
+  en: {
+    translation: {
+      "nav.home": "Home",
+      "nav.about": "About",
+      "nav.skills": "Skills",
+      "nav.experience": "Experience",
+      "nav.certifications": "Certifications",
+      "nav.blog": "Blog",
+      "nav.curriculum": "Resume",
+      "hero.title": "I specialize in identifying and exploiting vulnerabilities in applications, networks, and infrastructures. I use advanced Red Team and Pentest techniques to simulate real attacks and strengthen the security posture of organizations.",
+      "hero.subtitle": "Software Engineer · Security · Cloud · AI",
+      "hero.badge": "Available for projects",
+      "hero.photo": "Your photo here",
+      
+      // About
+      "about.title_label": "ABOUT ME",
+      "about.title_main": "Offensive",
+      "about.title_highlight": "Mindset",
+      "about.p1": "As a cybersecurity professional, I dedicate my career to understanding how systems are built to discover how they can be broken. My focus is on anticipating threats before they happen.",
+      "about.p2": "I work conducting penetration tests and adversary simulations, helping companies close critical gaps. I believe the best defense starts with a well-executed and planned attack.",
+      "about.stat1_value": "3+",
+      "about.stat1_label": "Years experience",
+      "about.stat2_value": "15+",
+      "about.stat2_label": "Certifications",
+      "about.stat3_value": "100%",
+      "about.stat3_label": "Commitment",
+      "about.contact_btn": "Get in Touch",
+
+      // Certifications
+      "certs.title_label": "CERTIFICATIONS",
+      "certs.title_main": "Relevant",
+      "certs.title_highlight": "Certifications",
+      "certs.description": "Credentials issued by the main offensive security authorities in the market.",
+      "certs.issuers_title": "Issuing Entities",
+      "certs.view_all_btn": "🎓 View all certifications",
+      "certs.status_prep": "In prep.",
+      "certs.status_active": "Active",
+      "certs.validate_link": "Validate official credential",
+      "certs.no_image": "No image available",
+
+      // Interests
+      "interests.title_label": "INTERESTS",
+      "interests.title_main": "Areas of",
+      "interests.title_highlight": "Interest",
+      "interests.description": "Domains where I focus research, practice, and continuous development within the cybersecurity ecosystem.",
+      "interests.i1_title": "Red Teaming & Threat Emulation",
+      "interests.i1_desc": "Realistic simulations of advanced adversaries (APT), emulation of TTPs based on MITRE ATT&CK, and purple team exercises to elevate defensive maturity.",
+      "interests.i2_title": "API Security and AppSec",
+      "interests.i2_desc": "Security analysis in REST and GraphQL APIs, code review focused on OWASP Top 10 vulnerabilities, SAST/DAST, and security integration in the development cycle.",
+      "interests.i3_title": "AI Applied to Cybersecurity",
+      "interests.i3_desc": "Use of machine learning and LLMs in threat detection, malware analysis automation, intelligent payload generation, and research in offensive and defensive AI.",
+      "interests.i4_title": "Threat Hunting and CTI",
+      "interests.i4_desc": "Proactive threat hunting in endpoints and networks, Cyber Threat Intelligence analysis, correlation of IOCs and TTPs, and support for CTEM operations.",
+      "interests.i5_title": "Cloud and Mobile Pentest",
+      "interests.i5_desc": "Penetration testing in AWS/GCP/Azure infrastructures, Android and iOS applications with static and dynamic analysis, and smart contract auditing.",
+      "interests.i6_title": "Software Architecture and Secure Development",
+      "interests.i6_desc": "Design of resilient systems with security-by-design, threat modeling (STRIDE/PASTA), DevSecOps, and implementation of security controls in CI/CD pipelines.",
+
+      // TechSkills
+      "skills.title_label": "SKILLS",
+      "skills.title_main": "Technical",
+      "skills.title_highlight": "Arsenal",
+      "skills.description": "Tools, languages, and platforms I use daily to discover vulnerabilities and conduct offensive operations.",
+      "skills.tools": "Tools",
+      "skills.languages": "Languages",
+      "skills.methodologies": "Methodologies",
+      "skills.specialties": "Specialties",
+      "skills.meth1_desc": "Main vulnerabilities in web applications and APIs",
+      "skills.meth2_desc": "Penetration Testing Execution Standard — full cycle",
+      "skills.meth3_desc": "Framework of real adversaries' TTPs",
+      "skills.meth4_desc": "Reconnaissance → Exploitation → Post-exploitation → Evasion",
+      "skills.spec1": "API Pentest",
+      "skills.spec2": "Web Pentest",
+      "skills.spec3": "Infrastructure Pentest",
+      "skills.spec4": "Social Engineering",
+      "skills.spec5": "Red Team",
+      "skills.spec6": "APT Simulation",
+      "skills.spec7": "Software Architecture",
+      "skills.spec8": "Secure & Scalable Development",
+
+      // Education
+      "edu.title_label": "EDUCATION",
+      "edu.title_main": "Academic",
+      "edu.title_highlight": "Path",
+      "edu.description": "Continuous education path in engineering, security, and data science.",
+      "edu.status_concluded": "Graduated",
+      "edu.status_progress": "In progress",
+      "edu.stat1_value": "5",
+      "edu.stat1_label": "Academic Degrees",
+      "edu.stat2_value": "4",
+      "edu.stat2_label": "Postgraduations",
+      "edu.stat3_value": "10+",
+      "edu.stat3_label": "Years of study",
+      "edu.type_postgrad": "Postgraduation",
+      "edu.type_grad": "Graduation",
+
+      // Blog
+      "blog.title_label": "BLOG",
+      "blog.title_main": "Latest",
+      "blog.title_highlight": "Publications",
+      "blog.description": "Sharing knowledge, writeups, and research on offensive security.",
+      "blog.read_more": "Read full article",
+      "blog.read_short": "Read",
+      "blog.view_all": "All Posts",
+
+      // Experience
+      "exp.title_label": "CAREER",
+      "exp.title_main": "Professional",
+      "exp.title_highlight": "Experience",
+      "exp.present": "Present",
+      "exp.job1_role": "Security Engineer (Offensive-Focused)",
+      "exp.job1_desc": "Conduct security assessments on new products and changes in business requirements across the organization. Correlate security findings from multiple sources with business needs, turning risk assessments and fraud prevention insights into fixes that really make a difference. Create security standards and implementation guides for the rollout of Cielo's internal platform.",
+      "exp.job2_role": "Security Analyst II",
+      "exp.job2_desc": "Pentests and security assessments in Web, API, and mobile (Android/iOS). Preparation of technical and executive reports. Participation in sprints with development squads (DevSecOps).",
+      "exp.job3_role": "Software Engineer",
+      "exp.job3_desc": "Development and architecture of secure solutions by design. Integration of security practices into the software development life cycle.",
+      "exp.job4_role": "BugHunter",
+      "exp.job4_desc": "Bug bounty hunter focused on identifying and exploiting vulnerabilities in Web applications, APIs, and mobile platforms. Acting in public and private programs, discovering critical flaws such as IDOR, SSRF, XSS, and authentication bypasses.",
+      "exp.job5_role": "Software Developer",
+      "exp.job5_desc": "Technical leadership in microservices projects with Java and SpringBoot. Responsible for the architecture of distributed systems processing +10M requests/day. 40% reduction in deployment time with CI/CD pipeline optimization.",
+    }
+  }
+};
+
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources,
+    fallbackLng: 'pt',
+    interpolation: {
+      escapeValue: false // react already safes from xss
+    }
+  });
+
+export default i18n;

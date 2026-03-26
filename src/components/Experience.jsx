@@ -1,105 +1,55 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { FiBriefcase, FiCalendar } from 'react-icons/fi'
 import SectionWrapper from './SectionWrapper'
-
-const experiences = [
-  {
-    role: 'Engenheiro de Segurança (Offensive-Focused)',
-    company: 'Loqed Systems',
-    period: '2024 — Presente',
-    description: 'Conduzir avaliações de segurança em novos produtos e nas mudanças de requisitos de negócios em toda a organização. Correlacionar achados de segurança de múltiplas fontes com as necessidades do negócio, transformando avaliações de risco e insights de prevenção de fraude em correções que realmente fazem a diferença. Criar padrões de segurança e guias de implementação para o rollout da plataforma interna da Cielo.',
-    techs: ['Security Assessment', 'Risk Analysis', 'Fraud Prevention'],
-    type: 'full-time',
-  },
-  {
-    role: 'Analista de Segurança II',
-    company: 'Loqed Systems',
-    period: '2023 — 2024',
-    description: 'Pentests e análises de segurança em Web, API e mobile (Android/iOS). Elaboração de relatórios técnicos e executivos. Participação em sprints com squads de desenvolvimento (DevSecOps).',
-    techs: ['Pentesting', 'Web Security', 'API Security', 'Mobile Security', 'DevSecOps'],
-    type: 'full-time',
-  },
-  {
-    role: 'Engenheiro de Software',
-    company: 'Loqed Systems',
-    period: '2024 — Presente',
-    description: 'Engenheiro de Software especializado em Java e Spring Framework, atuando no desenvolvimento de APIs RESTful e microserviços com foco em performance, escalabilidade e segurança. Experiência em integração de sistemas (REST/SOAP), mensageria (JMS) e bancos relacionais (Oracle, PostgreSQL, MySQL), aplicando boas práticas de arquitetura e engenharia em ambientes críticos.',
-    techs: ['Java', 'SpringBoot', 'Postgres', 'Hibernate', 'SpringSecurity'],
-    type: 'full-time',
-  },
-  {
-    role: 'BugHunter',
-    company: 'HuntersPay',
-    period: '2024 — Presente',
-    description: 'Bug bounty hunter focado na identificação e exploração de vulnerabilidades em aplicações Web, APIs e plataformas mobile. Atuação em programas públicos e privados, com descoberta de falhas críticas como IDOR, SSRF, XSS e falhas de autenticação.',
-    techs: ['Bug Bounty', 'IDOR', 'SSRF', 'XSS', 'Authentication','Vulnerabilidades'],
-    type: 'full-time',
-  },
-  {
-    role: 'Desenvolvedor de Software',
-    company: 'Caixa Econômica Federal, Banco do Brasil, Sicoob, Tribunal Superior Eleitoral e Exército Brasileiro',
-    period: '2019 — 2024',
-    description: 'Liderança técnica em projetos de microservices com Java e SpringBoot. Responsável pela arquitetura de sistemas distribuídos processando +10M requests/dia. Redução de 40% no tempo de deploy com otimização do pipeline CI/CD.',
-    techs: ['Java', 'Angular', 'AWS', 'Kubernetes', 'PostgreSQL', 'AWS'],
-    type: 'full-time',
-  },
-]
-
-function TimelineItem({ experience, index }) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 })
-  const isLeft = index % 2 === 0
-
-  return (
-    <div className="relative grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-8">
-      <div className={`${isLeft ? '' : 'md:order-3'} ${isLeft ? 'md:text-right' : ''}`}>
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="glass-card rounded-2xl p-6 group"
-        >
-          <div className={`flex items-center gap-2 mb-3 ${isLeft ? 'md:justify-end' : ''}`}>
-            <span className="text-xs font-mono text-neon-cyan">{experience.period}</span>
-          </div>
-          <h3 className="text-xl font-display font-bold text-white mb-1 group-hover:text-neon-cyan transition-colors">
-            {experience.role}
-          </h3>
-          <p className="text-neon-purple text-sm font-medium mb-3">{experience.company}</p>
-          <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            {experience.description}
-          </p>
-          <div className={`flex flex-wrap gap-2 ${isLeft ? 'md:justify-end' : ''}`}>
-            {experience.techs.map((tech) => (
-              <span
-                key={tech}
-                className="px-2 py-1 text-[10px] font-mono rounded-md glass-light text-gray-400"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-
-      <div className="hidden md:flex flex-col items-center md:order-2">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={inView ? { scale: 1 } : {}}
-          transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
-          className="w-4 h-4 rounded-full bg-gradient-to-br from-neon-cyan to-neon-purple shadow-[0_0_15px_rgba(0,212,255,0.5)] z-10 relative"
-        />
-        {index < experiences.length - 1 && (
-          <div className="w-px flex-1 bg-gradient-to-b from-neon-purple/30 to-transparent" />
-        )}
-      </div>
-
-      <div className={`hidden md:block ${isLeft ? 'md:order-3' : 'md:order-1'}`} />
-    </div>
-  )
-}
+import { useTranslation } from 'react-i18next'
 
 export default function Experience() {
+  const { t } = useTranslation();
+
+  const experiences = [
+    {
+      role: t('exp.job1_role'),
+      company: 'LOQED SYSTEMS',
+      period: `JAN 2024 - ${t('exp.present')}`,
+      description: t('exp.job1_desc'),
+      techs: ['Threat Modeling', 'AppSec', 'Risk Assessment'],
+      color: '#00d4ff'
+    },
+    {
+      role: t('exp.job2_role'),
+      company: 'LOQED SYSTEMS',
+      period: 'JAN 2023 - JAN 2024',
+      description: t('exp.job2_desc'),
+      techs: ['Web Pentest', 'API Security', 'Mobile', 'DevSecOps'],
+      color: '#8b5cf6'
+    },
+    {
+      role: t('exp.job3_role'),
+      company: 'LOQED SYSTEMS',
+      period: `AGO 2024 - ${t('exp.present')}`,
+      description: t('exp.job3_desc'),
+      techs: ['Software Architecture', 'Secure Coding', 'SDLC'],
+      color: '#ec4899'
+    },
+    {
+      role: t('exp.job4_role'),
+      company: 'HUNTERSPAY',
+      period: `JAN 2024 - ${t('exp.present')}`,
+      description: t('exp.job4_desc'),
+      techs: ['Bug Bounty', 'Web', 'API', 'Mobile', 'Exploit Dev'],
+      color: '#10b981'
+    },
+    {
+      role: t('exp.job5_role'),
+      company: 'CAIXA ECONÔMICA FEDERAL, BANCO DO BRASIL, SICOOB, TRIBUNAL SUPERIOR ELEITORAL E EXÉRCITO BRASILEIRO',
+      period: '2019 — 2024',
+      description: t('exp.job5_desc'),
+      techs: ['Java', 'Angular', 'AWS', 'Kubernetes', 'PostgreSQL'],
+      color: '#f59e0b'
+    }
+  ]
+
   return (
     <SectionWrapper id="experience">
       <div className="max-w-5xl mx-auto">
@@ -110,26 +60,95 @@ export default function Experience() {
             viewport={{ once: true }}
             className="text-xs font-mono text-neon-cyan uppercase tracking-[0.3em] mb-4 block"
           >
-            Carreira
+            {t('exp.title_label')}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white"
+            className="font-display font-bold text-white"
+            style={{ fontSize: 'clamp(1.8rem,4vw,3rem)' }}
           >
-            Experiência{' '}
-            <span className="gradient-text">Profissional</span>
+            {t('exp.title_main')}{' '}
+            <span className="gradient-text">{t('exp.title_highlight')}</span>
           </motion.h2>
         </div>
 
-        <div className="space-y-8 md:space-y-0">
-          {experiences.map((exp, i) => (
-            <TimelineItem key={exp.company} experience={exp} index={i} />
-          ))}
+        <div className="relative">
+          {/* Linha do tempo central */}
+          <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent transform md:-translate-x-1/2" />
+
+          <div className="space-y-12 relative">
+            {experiences.map((exp, i) => (
+              <TimelineItem key={i} exp={exp} index={i} />
+            ))}
+          </div>
         </div>
       </div>
     </SectionWrapper>
+  )
+}
+
+function TimelineItem({ exp, index }) {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
+  const isEven = index % 2 === 0
+
+  return (
+    <div ref={ref} className={`relative flex flex-col md:flex-row gap-8 md:gap-0 ${isEven ? 'md:flex-row-reverse' : ''}`}>
+      
+      {/* Marcador Central */}
+      <div className="absolute left-[20px] md:left-1/2 top-0 transform -translate-x-1/2 flex items-center justify-center">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={inView ? { scale: 1 } : {}}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="w-10 h-10 rounded-full glass-card flex items-center justify-center z-10"
+          style={{ border: `1px solid ${exp.color}40`, boxShadow: `0 0 20px ${exp.color}20` }}
+        >
+          <div className="w-3 h-3 rounded-full" style={{ background: exp.color }} />
+        </motion.div>
+      </div>
+
+      {/* Conteúdo */}
+      <motion.div
+        initial={{ opacity: 0, x: isEven ? 30 : -30 }}
+        animate={inView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? 'md:pl-12' : 'md:pr-12'}`}
+      >
+        <div className="glass-card rounded-2xl p-6 group hover:border-white/10 transition-colors">
+          <div className="flex flex-wrap items-center gap-3 mb-3 text-xs font-mono">
+            <span className="flex items-center gap-1.5" style={{ color: exp.color }}>
+              <FiBriefcase size={12} />
+              {exp.company}
+            </span>
+            <span className="text-gray-600">•</span>
+            <span className="flex items-center gap-1.5 text-gray-400">
+              <FiCalendar size={12} />
+              {exp.period}
+            </span>
+          </div>
+
+          <h3 className="text-xl font-bold text-white mb-4">{exp.role}</h3>
+          <p className="text-gray-400 text-sm leading-relaxed mb-6">
+            {exp.description}
+          </p>
+
+          <div className="flex flex-wrap gap-2">
+            {exp.techs.map(tech => (
+              <span key={tech} className="px-3 py-1 rounded-lg text-[10px] font-mono"
+                style={{ 
+                  background: 'rgba(255,255,255,0.03)', 
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  color: 'rgba(255,255,255,0.6)'
+                }}>
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
   )
 }

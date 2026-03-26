@@ -1,53 +1,54 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FiTarget, FiCode, FiCpu, FiSearch, FiCloud, FiLayers } from 'react-icons/fi'
+import { useTranslation } from 'react-i18next'
 import SectionWrapper from './SectionWrapper'
 
 const areas = [
   {
     icon: FiTarget,
-    title: 'Red Teaming & Emulação de Ameaças',
-    desc: 'Simulações realistas de adversários avançados (APT), emulação de TTPs com base no MITRE ATT&CK e exercícios de purple team para elevar a maturidade defensiva.',
+    titleKey: 'interests.i1_title',
+    descKey: 'interests.i1_desc',
     gradient: 'linear-gradient(135deg,#00d4ff,#3b82f6)',
     glow: 'rgba(0,212,255,0.2)',
     tags: ['APT Emulation', 'MITRE ATT&CK', 'Purple Team', 'C2 Frameworks'],
   },
   {
     icon: FiCode,
-    title: 'Segurança de APIs e AppSec',
-    desc: 'Análise de segurança em APIs REST e GraphQL, revisão de código com foco em vulnerabilidades OWASP Top 10, SAST/DAST e integração de segurança no ciclo de desenvolvimento.',
+    titleKey: 'interests.i2_title',
+    descKey: 'interests.i2_desc',
     gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)',
     glow: 'rgba(139,92,246,0.2)',
     tags: ['OWASP API Top 10', 'REST / GraphQL', 'SAST / DAST', 'Secure SDLC'],
   },
   {
     icon: FiCpu,
-    title: 'IA Aplicada à Segurança Cibernética',
-    desc: 'Uso de machine learning e LLMs em detecção de ameaças, automação de análise de malware, geração de payloads inteligentes e pesquisa em IA ofensiva e defensiva.',
+    titleKey: 'interests.i3_title',
+    descKey: 'interests.i3_desc',
     gradient: 'linear-gradient(135deg,#ec4899,#8b5cf6)',
     glow: 'rgba(236,72,153,0.2)',
     tags: ['LLMs em CyberSec', 'ML para Detecção', 'IA Ofensiva', 'Automação'],
   },
   {
     icon: FiSearch,
-    title: 'Threat Hunting e CTI',
-    desc: 'Caça proativa a ameaças em endpoints e redes, análise de Cyber Threat Intelligence, correlação de IOCs e TTPs, e suporte a operações de CTEM.',
+    titleKey: 'interests.i4_title',
+    descKey: 'interests.i4_desc',
     gradient: 'linear-gradient(135deg,#10b981,#00d4ff)',
     glow: 'rgba(16,185,129,0.2)',
     tags: ['IOC / TTP', 'CTEM', 'OSINT', 'Threat Intel Platforms'],
   },
   {
     icon: FiCloud,
-    title: 'Pentest em Cloud e Mobile',
-    desc: 'Testes de intrusão em infraestruturas AWS/GCP/Azure, aplicações Android e iOS com análise estática e dinâmica, e auditoria de contratos inteligentes.',
+    titleKey: 'interests.i5_title',
+    descKey: 'interests.i5_desc',
     gradient: 'linear-gradient(135deg,#3b82f6,#8b5cf6)',
     glow: 'rgba(59,130,246,0.2)',
     tags: ['Cloud Pentest', 'Android / iOS', 'Smart Contracts', 'Web3 Security'],
   },
   {
     icon: FiLayers,
-    title: 'Arquitetura de Software e Desenvolvimento Seguro',
-    desc: 'Design de sistemas resilientes com security-by-design, modelagem de ameaças (STRIDE/PASTA), DevSecOps e implementação de controles de segurança em pipelines CI/CD.',
+    titleKey: 'interests.i6_title',
+    descKey: 'interests.i6_desc',
     gradient: 'linear-gradient(135deg,#f59e0b,#ec4899)',
     glow: 'rgba(245,158,11,0.2)',
     tags: ['Threat Modeling', 'DevSecOps', 'Security by Design', 'CI/CD Security'],
@@ -56,6 +57,7 @@ const areas = [
 
 function AreaCard({ area, index }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })
+  const { t } = useTranslation()
 
   return (
     <motion.div
@@ -91,12 +93,12 @@ function AreaCard({ area, index }) {
       <h3
         className="text-white font-display font-semibold text-base leading-snug transition-colors duration-300 group-hover:text-neon-cyan"
       >
-        {area.title}
+        {t(area.titleKey)}
       </h3>
 
       {/* descrição */}
       <p className="text-gray-500 text-sm leading-relaxed flex-1">
-        {area.desc}
+        {t(area.descKey)}
       </p>
 
       {/* linha divisória animada */}
@@ -131,6 +133,8 @@ function AreaCard({ area, index }) {
 }
 
 export default function Interests() {
+  const { t } = useTranslation()
+
   return (
     <SectionWrapper id="areas">
       <div className="max-w-7xl mx-auto">
@@ -142,7 +146,7 @@ export default function Interests() {
             viewport={{ once: true }}
             className="text-xs font-mono text-neon-cyan uppercase tracking-[0.3em] mb-4 block"
           >
-            Foco & Expertise
+            {t('interests.title_label')}
           </motion.span>
 
           <motion.h2
@@ -153,8 +157,8 @@ export default function Interests() {
             className="font-display font-bold text-white"
             style={{ fontSize: 'clamp(1.8rem,4vw,3rem)' }}
           >
-            Áreas de{' '}
-            <span className="gradient-text">Interesse</span>
+            {t('interests.title_main')}{' '}
+            <span className="gradient-text">{t('interests.title_highlight')}</span>
           </motion.h2>
 
           <motion.p
@@ -164,14 +168,13 @@ export default function Interests() {
             transition={{ delay: 0.2 }}
             className="text-gray-500 text-sm mt-3 max-w-xl mx-auto leading-relaxed"
           >
-            Domínios onde concentro pesquisa, prática e desenvolvimento contínuo
-            dentro do ecossistema de cibersegurança.
+            {t('interests.description')}
           </motion.p>
         </div>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
           {areas.map((area, i) => (
-            <AreaCard key={area.title} area={area} index={i} />
+            <AreaCard key={area.titleKey} area={area} index={i} />
           ))}
         </div>
       </div>

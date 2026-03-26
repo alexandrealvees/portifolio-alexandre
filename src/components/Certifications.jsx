@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
 import { FiAward, FiCheckCircle, FiClock, FiArrowRight } from 'react-icons/fi'
+import { useTranslation } from 'react-i18next'
 import SectionWrapper from './SectionWrapper'
 
 
@@ -150,6 +151,7 @@ const issuers = Object.values(issuersMap).sort((a, b) => b.count - a.count)
 
 function CertCard({ cert, index }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })
+  const { t } = useTranslation()
 
   return (
     <motion.div
@@ -187,13 +189,13 @@ function CertCard({ cert, index }) {
             <span className="flex-shrink-0 flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full"
               style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.3)', color: '#f59e0b' }}>
               <FiClock size={10} />
-              Em prep.
+              {t('certs.status_prep')}
             </span>
           ) : (
             <span className="flex-shrink-0 flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full"
               style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)', color: '#10b981' }}>
               <FiCheckCircle size={10} />
-              Ativo
+              {t('certs.status_active')}
             </span>
           )}
         </div>
@@ -205,6 +207,8 @@ function CertCard({ cert, index }) {
 }
 
 export default function Certifications() {
+  const { t } = useTranslation()
+
   return (
     <SectionWrapper id="certificacoes">
       <div className="max-w-7xl mx-auto">
@@ -217,7 +221,7 @@ export default function Certifications() {
             viewport={{ once: true }}
             className="text-xs font-mono text-neon-cyan uppercase tracking-[0.3em] mb-4 block"
           >
-            Certificações
+            {t('certs.title_label')}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -227,8 +231,8 @@ export default function Certifications() {
             className="font-display font-bold text-white"
             style={{ fontSize: 'clamp(1.8rem,4vw,3rem)' }}
           >
-            Certificações{' '}
-            <span className="gradient-text">Relevantes</span>
+            {t('certs.title_main')}{' '}
+            <span className="gradient-text">{t('certs.title_highlight')}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -237,7 +241,7 @@ export default function Certifications() {
             transition={{ delay: 0.2 }}
             className="text-gray-500 text-sm mt-3 max-w-lg mx-auto"
           >
-            Credenciais emitidas pelas principais autoridades em segurança ofensiva do mercado.
+            {t('certs.description')}
           </motion.p>
         </div>
 
@@ -263,7 +267,7 @@ export default function Certifications() {
             >
               <h3 className="text-xs font-mono text-gray-500 uppercase tracking-wider mb-5 flex items-center gap-2">
                 <FiAward size={13} className="text-neon-cyan" />
-                Entidades Emissoras
+                {t('certs.issuers_title')}
               </h3>
               <div className="space-y-3">
                 {issuers.map((issuer) => (
@@ -305,7 +309,7 @@ export default function Certifications() {
                 onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 35px rgba(0,212,255,0.5)'}
                 onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 20px rgba(0,212,255,0.25)'}
               >
-                <span>🎓 Ver todas as certificações</span>
+                <span>{t('certs.view_all_btn')}</span>
                 <FiArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>

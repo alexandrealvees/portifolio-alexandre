@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FiBookOpen, FiCalendar, FiAward } from 'react-icons/fi'
+import { useTranslation } from 'react-i18next'
 import SectionWrapper from './SectionWrapper'
 
 const degrees = [
@@ -58,6 +59,7 @@ const degrees = [
 
 function TimelineItem({ degree, index, total }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
+  const { t } = useTranslation()
   const isLast = index === total - 1
 
   return (
@@ -123,7 +125,7 @@ function TimelineItem({ degree, index, total }) {
                   color: degree.dot,
                 }}
               >
-                {degree.type}
+                {degree.type === 'Pós-graduação' ? t('edu.type_postgrad') : t('edu.type_grad')}
               </span>
 
               {degree.current && (
@@ -139,7 +141,7 @@ function TimelineItem({ degree, index, total }) {
                     className="w-1.5 h-1.5 rounded-full animate-pulse"
                     style={{ background: '#00d4ff' }}
                   />
-                  Em andamento
+                  {t('edu.status_progress')}
                 </span>
               )}
             </div>
@@ -181,6 +183,8 @@ function TimelineItem({ degree, index, total }) {
 }
 
 export default function Education() {
+  const { t } = useTranslation()
+
   return (
     <SectionWrapper id="formacao">
       <div className="max-w-4xl mx-auto">
@@ -193,7 +197,7 @@ export default function Education() {
             viewport={{ once: true }}
             className="text-xs font-mono text-neon-cyan uppercase tracking-[0.3em] mb-4 block"
           >
-            Educação
+            {t('edu.title_label')}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -203,8 +207,8 @@ export default function Education() {
             className="font-display font-bold text-white"
             style={{ fontSize: 'clamp(1.8rem,4vw,3rem)' }}
           >
-            Formação{' '}
-            <span className="gradient-text">Acadêmica</span>
+            {t('edu.title_main')}{' '}
+            <span className="gradient-text">{t('edu.title_highlight')}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -213,7 +217,7 @@ export default function Education() {
             transition={{ delay: 0.2 }}
             className="text-gray-500 text-sm mt-3 max-w-md mx-auto"
           >
-            Trajetória de formação contínua em engenharia, segurança e ciência de dados.
+            {t('edu.description')}
           </motion.p>
         </div>
 
@@ -225,9 +229,9 @@ export default function Education() {
           className="grid grid-cols-3 gap-4 mb-12"
         >
           {[
-            { value: '5', label: 'Títulos acadêmicos' },
-            { value: '4', label: 'Pós-graduações' },
-            { value: '10+', label: 'Anos de estudo' },
+            { value: t('edu.stat1_value'), label: t('edu.stat1_label') },
+            { value: t('edu.stat2_value'), label: t('edu.stat2_label') },
+            { value: t('edu.stat3_value'), label: t('edu.stat3_label') },
           ].map((s, i) => (
             <div
               key={s.label}

@@ -7,6 +7,7 @@ import {
 import { FiCode, FiTool, FiBookOpen, FiStar, FiCpu, FiTerminal, FiZap } from 'react-icons/fi'
 import { DiJava } from 'react-icons/di'
 import SectionWrapper from './SectionWrapper'
+import { useTranslation } from 'react-i18next'
 
 /* ─── dados ─────────────────────────────────────────────────── */
 
@@ -36,21 +37,21 @@ const languages = [
 ]
 
 const methodologies = [
-  { name: 'OWASP Top 10',        icon: SiOwasp,    desc: 'Principais vulnerabilidades em aplicações web e APIs' },
-  { name: 'PTES',                icon: FiBookOpen, desc: 'Penetration Testing Execution Standard — ciclo completo' },
-  { name: 'MITRE ATT&CK',        icon: FiCpu,      desc: 'Framework de TTPs de adversários reais' },
-  { name: 'Red Team Kill Chain', icon: FiStar,     desc: 'Reconhecimento → Exploração → Pós-exploração → Evasão' },
+  { name: 'OWASP Top 10',        icon: SiOwasp,    descKey: 'skills.meth1_desc' },
+  { name: 'PTES',                icon: FiBookOpen, descKey: 'skills.meth2_desc' },
+  { name: 'MITRE ATT&CK',        icon: FiCpu,      descKey: 'skills.meth3_desc' },
+  { name: 'Red Team Kill Chain', icon: FiStar,     descKey: 'skills.meth4_desc' },
 ]
 
 const specialties = [
-  { label: 'Pentest de APIs',                 gradient: 'linear-gradient(135deg,#00d4ff,#3b82f6)' },
-  { label: 'Pentest Web',                     gradient: 'linear-gradient(135deg,#3b82f6,#8b5cf6)' },
-  { label: 'Pentest de Infra',                gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)' },
-  { label: 'Engenharia Social',               gradient: 'linear-gradient(135deg,#ec4899,#f97316)' },
-  { label: 'Red Team',                        gradient: 'linear-gradient(135deg,#f97316,#f59e0b)' },
-  { label: 'APT Simulation',                  gradient: 'linear-gradient(135deg,#f59e0b,#10b981)' },
-  { label: 'Arquitetura de Software',         gradient: 'linear-gradient(135deg,#10b981,#00d4ff)' },
-  { label: 'Desenvolvimento Seguro & Escalável', gradient: 'linear-gradient(135deg,#00d4ff,#8b5cf6)' },
+  { labelKey: 'skills.spec1',                 gradient: 'linear-gradient(135deg,#00d4ff,#3b82f6)' },
+  { labelKey: 'skills.spec2',                     gradient: 'linear-gradient(135deg,#3b82f6,#8b5cf6)' },
+  { labelKey: 'skills.spec3',                gradient: 'linear-gradient(135deg,#8b5cf6,#ec4899)' },
+  { labelKey: 'skills.spec4',               gradient: 'linear-gradient(135deg,#ec4899,#f97316)' },
+  { labelKey: 'skills.spec5',                        gradient: 'linear-gradient(135deg,#f97316,#f59e0b)' },
+  { labelKey: 'skills.spec6',                  gradient: 'linear-gradient(135deg,#f59e0b,#10b981)' },
+  { labelKey: 'skills.spec7',         gradient: 'linear-gradient(135deg,#10b981,#00d4ff)' },
+  { labelKey: 'skills.spec8', gradient: 'linear-gradient(135deg,#00d4ff,#8b5cf6)' },
 ]
 
 /* ─── sub-componentes ───────────────────────────────────────── */
@@ -133,6 +134,7 @@ function LangChip({ lang, index, inView }) {
 /* ─── componente principal ──────────────────────────────────── */
 
 export default function TechSkills() {
+  const { t } = useTranslation()
   const [toolsRef, toolsInView]   = useInView({ triggerOnce: true, threshold: 0.1 })
   const [langsRef, langsInView]   = useInView({ triggerOnce: true, threshold: 0.1 })
   const [methRef,  methInView]    = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -150,7 +152,7 @@ export default function TechSkills() {
             viewport={{ once: true }}
             className="text-xs font-mono text-neon-cyan uppercase tracking-[0.3em] mb-4 block"
           >
-            Arsenal Técnico
+            {t('skills.title_label')}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -160,8 +162,8 @@ export default function TechSkills() {
             className="font-display font-bold text-white"
             style={{ fontSize: 'clamp(1.8rem,4vw,3rem)' }}
           >
-            Habilidades{' '}
-            <span className="gradient-text">Técnicas</span>
+            {t('skills.title_main')}{' '}
+            <span className="gradient-text">{t('skills.title_highlight')}</span>
           </motion.h2>
         </div>
 
@@ -176,7 +178,7 @@ export default function TechSkills() {
             transition={{ duration: 0.6 }}
             className="glass-card rounded-2xl p-6"
           >
-            <BlockHeader icon={FiTool} label="Ferramentas" color="#00d4ff" />
+            <BlockHeader icon={FiTool} label={t('skills.tools')} color="#00d4ff" />
             <div className="flex flex-wrap gap-2">
               {tools.map((t, i) => (
                 <ToolPill key={t.name} name={t.name} Icon={t.icon} index={i} inView={toolsInView} />
@@ -192,7 +194,7 @@ export default function TechSkills() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="glass-card rounded-2xl p-6"
           >
-            <BlockHeader icon={FiCode} label="Linguagens" color="#8b5cf6" />
+            <BlockHeader icon={FiCode} label={t('skills.languages')} color="#8b5cf6" />
             <div className="flex flex-wrap gap-2">
               {languages.map((l, i) => (
                 <LangChip key={l.name} lang={l} index={i} inView={langsInView} />
@@ -209,7 +211,7 @@ export default function TechSkills() {
           transition={{ duration: 0.6 }}
           className="glass-card rounded-2xl p-6"
         >
-          <BlockHeader icon={FiBookOpen} label="Metodologias" color="#10b981" />
+          <BlockHeader icon={FiBookOpen} label={t('skills.methodologies')} color="#10b981" />
           <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
             {methodologies.map((m, i) => (
               <motion.div
@@ -238,7 +240,7 @@ export default function TechSkills() {
                   </span>
                 </div>
                 <p className="text-gray-600 text-[11px] leading-relaxed">
-                  {m.desc}
+                  {t(m.descKey)}
                 </p>
               </motion.div>
             ))}
@@ -253,11 +255,11 @@ export default function TechSkills() {
           transition={{ duration: 0.6 }}
           className="glass-card rounded-2xl p-6"
         >
-          <BlockHeader icon={FiStar} label="Especialidades" color="#ec4899" />
+          <BlockHeader icon={FiStar} label={t('skills.specialties')} color="#ec4899" />
           <div className="flex flex-wrap gap-3">
             {specialties.map((s, i) => (
               <motion.div
-                key={s.label}
+                key={s.labelKey}
                 initial={{ opacity: 0, scale: 0.88 }}
                 animate={specInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: i * 0.07 }}
@@ -283,7 +285,7 @@ export default function TechSkills() {
                   style={{ background: s.gradient }}
                 />
                 <span className="relative z-10 text-xs font-mono text-gray-300 group-hover:text-white transition-colors">
-                  {s.label}
+                  {t(s.labelKey)}
                 </span>
               </motion.div>
             ))}

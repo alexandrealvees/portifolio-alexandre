@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import SectionWrapper from './SectionWrapper'
 import { getAllPosts } from '../utils/mdxUtils'
 
@@ -10,6 +11,7 @@ const posts = getAllPosts()
 /* ── Card com cursor "Read" magnético ─────────────────────────── */
 function BlogCard({ post, index }) {
   const cardRef = useRef(null)
+  const { t } = useTranslation()
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false })
 
   const handleMouseMove = useCallback((e) => {
@@ -105,7 +107,7 @@ function BlogCard({ post, index }) {
                 fontFamily: 'monospace',
               }}
             >
-              Read
+              {t('blog.read_short')}
             </span>
           </div>
         </motion.div>
@@ -152,6 +154,8 @@ function BlogCard({ post, index }) {
 
 /* ── seção ────────────────────────────────────────────────────── */
 export default function Blog() {
+  const { t } = useTranslation()
+
   return (
     <SectionWrapper id="blog">
       <div className="max-w-7xl mx-auto">
@@ -164,7 +168,7 @@ export default function Blog() {
             viewport={{ once: true }}
             className="text-xs font-mono text-gray-500 uppercase tracking-[0.3em]"
           >
-            Blog
+            {t('blog.title_label')}
           </motion.span>
 
           <motion.div
@@ -177,7 +181,7 @@ export default function Blog() {
               className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gray-500 hover:text-white transition-colors duration-300 group"
               style={{ textDecoration: 'none' }}
             >
-              All Posts
+              {t('blog.view_all')}
               <FiArrowUpRight
                 size={13}
                 className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -208,7 +212,7 @@ export default function Blog() {
             className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gray-500 hover:text-white transition-colors duration-300 group"
             style={{ textDecoration: 'none' }}
           >
-            All Posts
+            {t('blog.view_all')}
             <FiArrowUpRight
               size={13}
               className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
