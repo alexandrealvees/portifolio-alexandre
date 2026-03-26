@@ -98,6 +98,16 @@ const resources = {
       "edu.stat3_label": "Anos de estudo",
       "edu.type_postgrad": "Pós-graduação",
       "edu.type_grad": "Graduação",
+      "edu.course1_name": "Engenharia de Software Aplicada Java",
+      "edu.course1_inst": "UNIPDS",
+      "edu.course2_name": "Arquitetura de Software com Java",
+      "edu.course2_inst": "FIAP - Faculdade de Informática e Administração Paulista",
+      "edu.course3_name": "Analista de Cibersegurança",
+      "edu.course3_inst": "IGTI - Instituto de Gestão e Tecnologia da Informação",
+      "edu.course4_name": "Ciência de Dados",
+      "edu.course4_inst": "IESB - Instituto de Educação Superior de Brasília",
+      "edu.course5_name": "Ciência da Computação",
+      "edu.course5_inst": "UNIP - Universidade Paulista",
 
       // Blog
       "blog.title_label": "BLOG",
@@ -220,6 +230,16 @@ const resources = {
       "edu.stat3_label": "Years of study",
       "edu.type_postgrad": "Postgraduation",
       "edu.type_grad": "Graduation",
+      "edu.course1_name": "Software Engineering Applied to Java",
+      "edu.course1_inst": "UNIPDS",
+      "edu.course2_name": "Software Architecture with Java",
+      "edu.course2_inst": "FIAP - Paulista Faculty of Informatics and Administration",
+      "edu.course3_name": "Cybersecurity Analyst",
+      "edu.course3_inst": "IGTI - Institute of Management and Information Technology",
+      "edu.course4_name": "Data Science",
+      "edu.course4_inst": "IESB - Higher Education Institute of Brasília",
+      "edu.course5_name": "Computer Science",
+      "edu.course5_inst": "UNIP - Paulista University",
 
       // Blog
       "blog.title_label": "BLOG",

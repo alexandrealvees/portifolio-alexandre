@@ -7,8 +7,8 @@ import SectionWrapper from './SectionWrapper'
 const degrees = [
   {
     type: 'Pós-graduação',
-    course: 'Engenharia de Software Aplicada Java',
-    institution: 'UNIPDS',
+    courseKey: 'edu.course1_name',
+    instKey: 'edu.course1_inst',
     period: '2026',
     current: true,
     gradient: 'linear-gradient(135deg,#00d4ff,#3b82f6)',
@@ -17,8 +17,8 @@ const degrees = [
   },
   {
     type: 'Pós-graduação',
-    course: 'Arquitetura de Software com Java',
-    institution: 'FIAP - Faculdade de Informática e Administração Paulista',
+    courseKey: 'edu.course2_name',
+    instKey: 'edu.course2_inst',
     period: '2022 – 2023',
     current: false,
     gradient: 'linear-gradient(135deg,#8b5cf6,#3b82f6)',
@@ -27,8 +27,8 @@ const degrees = [
   },
   {
     type: 'Pós-graduação',
-    course: 'Analista de Cibersegurança',
-    institution: 'IGTI - Instituto de Gestão e Tecnologia da Informação',
+    courseKey: 'edu.course3_name',
+    instKey: 'edu.course3_inst',
     period: '2020 – 2021',
     current: false,
     gradient: 'linear-gradient(135deg,#ec4899,#8b5cf6)',
@@ -37,8 +37,8 @@ const degrees = [
   },
   {
     type: 'Pós-graduação',
-    course: 'Ciência de Dados',
-    institution: 'IESB - Instituto de Educação Superior de Brasília',
+    courseKey: 'edu.course4_name',
+    instKey: 'edu.course4_inst',
     period: '2019 – 2021',
     current: false,
     gradient: 'linear-gradient(135deg,#f59e0b,#ec4899)',
@@ -47,8 +47,8 @@ const degrees = [
   },
   {
     type: 'Graduação',
-    course: 'Ciência da Computação',
-    institution: 'UNIP - Universidade Paulista',
+    courseKey: 'edu.course5_name',
+    instKey: 'edu.course5_inst',
     period: '2014 – 2018',
     current: false,
     gradient: 'linear-gradient(135deg,#10b981,#00d4ff)',
@@ -151,14 +151,14 @@ function TimelineItem({ degree, index, total }) {
               className="font-display font-bold text-white mb-1 leading-snug transition-colors duration-300 group-hover:text-neon-cyan"
               style={{ fontSize: 'clamp(0.95rem,2vw,1.1rem)' }}
             >
-              {degree.course}
+              {t(degree.courseKey)}
             </h3>
 
             {/* instituição */}
             <div className="flex items-center gap-1.5">
               <FiAward size={12} style={{ color: degree.dot }} />
               <span className="text-sm font-semibold" style={{ color: degree.dot }}>
-                {degree.institution}
+                {t(degree.instKey)}
               </span>
             </div>
           </div>
