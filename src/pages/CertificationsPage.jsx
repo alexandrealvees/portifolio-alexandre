@@ -12,12 +12,17 @@ import imgCoi from '../images/certs/cwl/coi.png'
 import imgWebrta from '../images/certs/cwl/webrta.png'
 import imgCapt from '../images/certs/hackviser/capt.jpg'
 import imgCwse from '../images/certs/hackviser/cwse.png'
+import imgC3sa from '../images/certs/cwl/c3sa.png'
+import imgMbcta from '../images/certs/cwl/mbcta.png'
+import imgMcrta from '../images/certs/cwl/mcrta.png'
 import imgEjpt from '../images/certs/ine/ejpt.png'
 import imgCapen from '../images/certs/thesecgroup/capen.jpg'
 import imgCnpen from '../images/certs/thesecgroup/cnpen.jpg'
 import imgAz900 from '../images/certs/microsoft/az900.jpg'
 import imgSc900 from '../images/certs/microsoft/sc900.png'
 import imgAws from '../images/certs/aws/aws.jpg'
+import imgEhrem from '../images/certs/gohacking/ehrem.png'
+import imgEhmde from '../images/certs/gohacking/ehmde.png'
 
 
 const ORGS = {
@@ -28,7 +33,8 @@ const ORGS = {
   DESEC:  { label: 'Desec Security',     color: '#f59e0b' },
   HACKVISER: { label: 'Hackviser',       color: '#f43f5e' },
   MICROSOFT: { label: 'Microsoft',       color: '#1621b8' },
-  AWS:      { label: 'AWS',              color: '#678685' }
+  AWS:      { label: 'AWS',              color: '#678685' },
+  GOHACKING: { label: 'GoHacking',       color: '#6366f1' }
 }
 
 const certifications = [
@@ -103,6 +109,36 @@ const certifications = [
     status: 'active',
   },
   {
+    id: 'c3sa',
+    code: 'C3SA',
+    name: 'Cyber Security Analyst',
+    org: 'CWL',
+    date: '2025-08-25',
+    image: imgC3sa,
+    validateUrl: 'https://labs.cyberwarfare.live/credential/achievement/694b3a5f03711ca7db93f222',
+    status: 'active',
+  },
+  {
+    id: 'mbcta',
+    code: 'MBCTA',
+    name: 'Multi-Cloud Blue Team Analyst',
+    org: 'CWL',
+    date: '2025-08-22',
+    image: imgMbcta,
+    validateUrl: 'https://labs.cyberwarfare.live/credential/achievement/68a8f8a37c217ee6bfc05ac7',
+    status: 'active',
+  },
+  {
+    id: 'mcrta',
+    code: 'MCRTA',
+    name: 'Multi-Cloud Red Team Analyst',
+    org: 'CWL',
+    date: '2025-08-23',
+    image: imgMcrta,
+    validateUrl: 'https://labs.cyberwarfare.live/credential/achievement/68a95f6cbf373ee66a219386',
+    status: 'active',
+  },
+  {
     id: 'webrta',
     code: 'WEB-RTA',
     name: 'Web Red Team Analyst',
@@ -172,9 +208,27 @@ const certifications = [
     validateUrl: 'https://www.credly.com/badges/49047fd6-47a3-4d4a-9809-03ae0ec8a919/linked_in_profile',
     status: 'active',
   },
+  {
+    id: 'gohacking_ehmde',
+    code: 'EHMDE',
+    name: 'Ethical Hacking Malware Development Essentials',
+    org: 'GOHACKING',
+    date: '2025-10-27',
+    image: imgEhmde,
+    validateUrl: 'blob:https://academy.gohacking.com.br/79b86e16-5a38-4689-b802-5e46dd77ab25',
+    status: 'active',
+  },
+  {
+    id: 'gohacking_ehrem',
+    code: 'EHREM',
+    name: 'Ethical Hacking Reverse Engineering Essentials',
+    org: 'GOHACKING',
+    date: null,
+    image: imgEhrem,
+    validateUrl: 'blob:https://academy.gohacking.com.br/f4be4eb6-d88d-4e33-8a86-8d4c5c9bf875',
+    status: 'active',
+  }
 ]
-
-/* ── sub-componentes ───────────────────────────────────────────── */
 
 function CertCard({ cert, index }) {
   const [hovered, setHovered] = useState(false)
@@ -199,7 +253,7 @@ function CertCard({ cert, index }) {
         transition: 'border-color 0.3s, box-shadow 0.3s',
       }}
     >
-      {/* ── thumbnail ── */}
+
       <div
         className="relative overflow-hidden"
         style={{ aspectRatio: '16/10', background: 'rgba(255,255,255,0.02)' }}
@@ -211,7 +265,7 @@ function CertCard({ cert, index }) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          /* placeholder */
+
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
             <div
               className="w-14 h-14 rounded-xl flex items-center justify-center"
@@ -227,7 +281,6 @@ function CertCard({ cert, index }) {
           </div>
         )}
 
-        {/* status em preparação */}
         {cert.status === 'preparation' && (
           <div
             className="absolute top-2 right-2 px-2 py-0.5 rounded-md text-[9px] font-mono uppercase tracking-wider"
@@ -328,8 +381,6 @@ function CertCard({ cert, index }) {
   )
 }
 
-/* ── página principal ──────────────────────────────────────────── */
-
 export default function CertificationsPage() {
   const navigate = useNavigate()
   const [orgFilter, setOrgFilter] = useState('ALL')
@@ -400,7 +451,6 @@ export default function CertificationsPage() {
         </div>
       </div>
 
-      {/* ── FILTROS ────────────────────────────────────────────── */}
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '28px 32px 0' }}>
         <div style={{
           display: 'flex', alignItems: 'center', gap: 12,
@@ -459,7 +509,6 @@ export default function CertificationsPage() {
         </div>
       </div>
 
-      {/* ── GRID ───────────────────────────────────────────────── */}
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '24px 32px 80px' }}>
         <motion.div
           layout
@@ -467,7 +516,7 @@ export default function CertificationsPage() {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
             gap: 20,
-            alignItems: 'start', // Impede que os cards estiquem para igualar a altura da linha
+            alignItems: 'start',
           }}
         >
           <AnimatePresence mode="popLayout">
