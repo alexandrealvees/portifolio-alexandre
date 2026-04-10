@@ -33,7 +33,7 @@ export default function GrainOverlay() {
           opacity: 0.13;
           mix-blend-mode: screen;
           will-change: transform;
-          animation: grain-move 0.8s steps(1) infinite;
+          animation: grain-move 8s linear infinite;
 
           /* textura gerada via SVG data-uri — sem request externo */
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
@@ -42,17 +42,11 @@ export default function GrainOverlay() {
         }
 
         @keyframes grain-move {
-          0%   { transform: translate(0%,    0%);    }
-          10%  { transform: translate(-5%,  -10%);   }
-          20%  { transform: translate(-15%,  5%);    }
-          30%  { transform: translate(7%,   -15%);   }
-          40%  { transform: translate(-5%,   20%);   }
-          50%  { transform: translate(-20%,  10%);   }
-          60%  { transform: translate(15%,   5%);    }
-          70%  { transform: translate(0%,   25%);    }
-          80%  { transform: translate(3%,  -15%);    }
-          90%  { transform: translate(-10%, 10%);    }
-          100% { transform: translate(0%,    0%);    }
+          0%   { transform: translate(0%,    0%);   }
+          25%  { transform: translate(-5%,  -10%);  }
+          50%  { transform: translate(-15%,  5%);   }
+          75%  { transform: translate(7%,   -8%);   }
+          100% { transform: translate(0%,    0%);   }
         }
 
         /* versão mais sutil em motion-reduce */
