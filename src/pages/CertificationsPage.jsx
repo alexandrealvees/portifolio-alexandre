@@ -23,6 +23,7 @@ import imgSc900 from '../images/certs/microsoft/sc900.png'
 import imgAws from '../images/certs/aws/aws.jpg'
 import imgEhrem from '../images/certs/gohacking/ehrem.png'
 import imgEhmde from '../images/certs/gohacking/ehmde.png'
+import imgCsoa from '../images/certs/hackviser/csoa.png'
 
 
 const ORGS = {
@@ -169,6 +170,16 @@ const certifications = [
     status: 'active',
   },
   {
+    id: 'CSOA',
+    code: 'CSOA',
+    name: 'Certified Security Operations Analyst',
+    org: 'HACKVISER',
+    date: '2026-04-06',
+    image: imgCsoa,
+    validateUrl: 'https://hackviser.com/verify?id=HV-CAPT-W733I3ME',
+    status: 'active',
+  },
+  {
     id: 'ejpt',
     code: 'eJPTv2',
     name: 'Junior Penetration Tester v2',
@@ -215,7 +226,7 @@ const certifications = [
     org: 'GOHACKING',
     date: '2025-10-27',
     image: imgEhmde,
-    validateUrl: 'blob:https://academy.gohacking.com.br/79b86e16-5a38-4689-b802-5e46dd77ab25',
+    validateUrl: 'https://academy.gohacking.com.br/79b86e16-5a38-4689-b802-5e46dd77ab25',
     status: 'active',
   },
   {
@@ -225,7 +236,7 @@ const certifications = [
     org: 'GOHACKING',
     date: null,
     image: imgEhrem,
-    validateUrl: 'blob:https://academy.gohacking.com.br/f4be4eb6-d88d-4e33-8a86-8d4c5c9bf875',
+    validateUrl: 'https://academy.gohacking.com.br/f4be4eb6-d88d-4e33-8a86-8d4c5c9bf875',
     status: 'active',
   }
 ]

@@ -112,6 +112,14 @@ const certifications = [
     gradient: 'linear-gradient(135deg,#f43f5e,#fb923c)',
   },
   {
+    code: 'CSOA',
+    name: 'Certified Security Operations Analyst',
+    issuer: 'Hackviser',
+    status: 'active',
+    color: '#f43f5e',
+    gradient: 'linear-gradient(135deg,#f43f5e,#fb923c)',
+  },
+  {
     code: 'eJPTv2',
     name: 'Junior Penetration Tester v2',
     issuer: 'INE Security',
