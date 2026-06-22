@@ -24,6 +24,54 @@ const certifications = [
     gradient: 'linear-gradient(135deg,#ec4899,#f43f5e)',
   },
   {
+    code: 'CAIMLPen',
+    name: 'Certified AI/ML Pentester',
+    issuer: 'SecOps Group',
+    status: 'active',
+    color: '#ec4899',
+    gradient: 'linear-gradient(135deg,#ec4899,#f43f5e)',
+  },
+  {
+    code: 'CAgAIPen',
+    name: 'Certified Agentic AI Pentester',
+    issuer: 'SecOps Group',
+    status: 'active',
+    color: '#ec4899',
+    gradient: 'linear-gradient(135deg,#ec4899,#f43f5e)',
+  },
+  {
+    code: 'SYCP',
+    name: 'Solyd Certified Pentester',
+    issuer: 'Solyd Offensive Security',
+    status: 'active',
+    color: '#00d4ff',
+    gradient: 'linear-gradient(135deg,#00d4ff,#3b82f6)',
+  },
+  {
+    code: 'SYH2',
+    name: 'Solyd Hardware Hacker',
+    issuer: 'Solyd Offensive Security',
+    status: 'active',
+    color: '#00d4ff',
+    gradient: 'linear-gradient(135deg,#00d4ff,#3b82f6)',
+  },
+  {
+    code: 'SYWP',
+    name: 'Solyd Wireless Pentester',
+    issuer: 'Solyd Offensive Security',
+    status: 'active',
+    color: '#00d4ff',
+    gradient: 'linear-gradient(135deg,#00d4ff,#3b82f6)',
+  },
+  {
+    code: 'DCPT',
+    name: 'Desec Certified Penetration Tester',
+    issuer: 'Desec Security',
+    status: 'active',
+    color: '#f59e0b',
+    gradient: 'linear-gradient(135deg,#f59e0b,#fbbf24)',
+  },
+  {
     code: 'CRTA',
     name: 'Certified Red Team Analyst',
     issuer: 'Cyber Warfare Labs',
@@ -177,6 +225,8 @@ const issuerStyles = {
   'INE Security': 'linear-gradient(135deg,#10b981,#34d399)',
   'AWS': 'linear-gradient(135deg,#678685,#9ca3af)',
   'GoHacking': 'linear-gradient(135deg,#6366f1,#818cf8)',
+  'Solyd Offensive Security': 'linear-gradient(135deg,#00d4ff,#3b82f6)',
+  'Desec Security': 'linear-gradient(135deg,#f59e0b,#fbbf24)',
 }
 
 // Gera a lista de emissores dinamicamente com base no array de certificações

@@ -18,6 +18,12 @@ import imgMcrta from '../images/certs/cwl/mcrta.png'
 import imgEjpt from '../images/certs/ine/ejpt.png'
 import imgCapen from '../images/certs/thesecgroup/capen.jpg'
 import imgCnpen from '../images/certs/thesecgroup/cnpen.jpg'
+import imgCaimlpen from '../images/certs/thesecgroup/caimlpen.png'
+import imgCagaipen from '../images/certs/thesecgroup/cagaipen.png'
+import imgSycp from '../images/certs/solyd/sycp.png'
+import imgSyh2 from '../images/certs/solyd/syh2.png'
+import imgSywp from '../images/certs/solyd/sywp.png'
+import imgDcpt from '../images/certs/desec/dcpt.png'
 import imgAz900 from '../images/certs/microsoft/az900.jpg'
 import imgSc900 from '../images/certs/microsoft/sc900.png'
 import imgAws from '../images/certs/aws/aws.jpg'
@@ -57,6 +63,66 @@ const certifications = [
     date: '2026-03-18',
     image: imgCapen,
     validateUrl: 'https://candidate.speedexam.net/certificate.aspx?SSTATE=am4131EniU8ntjp4bO5mXRP/f0873MHBb6afedIUIwGJdvvMiU6efJYWPxjGVVtoKYMxD/g1cxPe8LQgfYijkC/XHv3nR/OgRDXEYHhBQ6k=',
+    status: 'active',
+  },
+  {
+    id: 'caimlpen',
+    code: 'C-AI/MLPen',
+    name: 'Certified AI/ML Pentester',
+    org: 'SECOPS',
+    date: '2026-06-03',
+    image: imgCaimlpen,
+    validateUrl: 'https://pentestingexams.com/certificate-validation/',
+    status: 'active',
+  },
+  {
+    id: 'cagaipen',
+    code: 'C-AgAIPen',
+    name: 'Certified Agentic AI Pentester',
+    org: 'SECOPS',
+    date: '2026-06-07',
+    image: imgCagaipen,
+    validateUrl: 'https://pentestingexams.com/certificate-validation/',
+    status: 'active',
+  },
+  {
+    id: 'sycp',
+    code: 'SYCP',
+    name: 'Solyd Certified Pentester',
+    org: 'SOLYD',
+    date: '2026-06-02',
+    image: imgSycp,
+    validateUrl: 'https://solyd.com.br/ead/pentest/certificate/6eZdl2TGIf/',
+    status: 'active',
+  },
+  {
+    id: 'syh2',
+    code: 'SYH2',
+    name: 'Solyd Hardware Hacker',
+    org: 'SOLYD',
+    date: '2026-05-11',
+    image: imgSyh2,
+    validateUrl: null,
+    status: 'active',
+  },
+  {
+    id: 'sywp',
+    code: 'SYWP',
+    name: 'Solyd Wireless Pentester',
+    org: 'SOLYD',
+    date: '2026-06-08',
+    image: imgSywp,
+    validateUrl: 'https://solyd.com.br/ead/pentest/certificate/XLDgUYMewc/',
+    status: 'active',
+  },
+  {
+    id: 'dcpt',
+    code: 'DCPT',
+    name: 'Desec Certified Penetration Tester',
+    org: 'DESEC',
+    date: '2026-06-10',
+    image: imgDcpt,
+    validateUrl: 'https://academy.desecsecurity.com/certificacao/PLEU-AIEQQ-OMWQ',
     status: 'active',
   },
   {
