@@ -16,7 +16,8 @@ export default function Hero() {
     { label: t('nav.about'), id: 'sobre' },
     { label: t('nav.skills'), id: 'habilidades' },
     { label: t('nav.experience'), id: 'experience' },
-    { label: t('nav.certifications'), id: 'certificacoes' }
+    { label: t('nav.certifications'), id: 'certificacoes' },
+    { label: t('nav.achievements'), id: 'conquistas' }
   ]
 
   const toggleLanguage = () => {

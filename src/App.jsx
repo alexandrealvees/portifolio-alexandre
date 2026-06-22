@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 
 const About = lazy(() => import('./components/About'))
 const Certifications = lazy(() => import('./components/Certifications'))
+const Achievements = lazy(() => import('./components/Achievements'))
 const Interests = lazy(() => import('./components/Interests'))
 const TechSkills = lazy(() => import('./components/TechSkills'))
 const Education = lazy(() => import('./components/Education'))
@@ -35,6 +36,7 @@ export default function App() {
         <Suspense fallback={<LoadingFallback />}>
           <ErrorBoundary><About /></ErrorBoundary>
           <ErrorBoundary><Certifications /></ErrorBoundary>
+          <ErrorBoundary><Achievements /></ErrorBoundary>
           <ErrorBoundary><Interests /></ErrorBoundary>
           <ErrorBoundary><TechSkills /></ErrorBoundary>
           <ErrorBoundary><Education /></ErrorBoundary>
