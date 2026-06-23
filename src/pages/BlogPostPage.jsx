@@ -7,12 +7,13 @@ import { FiCalendar, FiTag } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 import GrainOverlay from '../components/ui/GrainOverlay';
 import BackHeader from '../components/layout/BackHeader';
-import { getPostBySlug } from '../utils/mdxUtils';
+import { getPostBySlug, formatPostDate } from '../utils/mdxUtils';
 
 export default function BlogPostPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language.startsWith('pt') ? 'pt-BR' : 'en-US';
   const post = getPostBySlug(slug);
 
   if (!post) {
@@ -48,9 +49,21 @@ export default function BlogPostPage() {
               <FiTag size={12} /> {post.category}
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.4)', fontSize: 13, fontFamily: 'monospace' }}>
-              <FiCalendar size={13} /> {post.date}
+              <FiCalendar size={13} /> {formatPostDate(post.date, locale)}
             </span>
           </div>
+
+          {post.tags.length > 0 && (
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 24 }}>
+              {post.tags.map(tag => (
+                <span key={tag} style={{
+                  fontSize: 11, fontFamily: 'monospace', color: 'rgba(255,255,255,0.55)',
+                  background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+                  padding: '3px 9px', borderRadius: 999,
+                }}>#{tag}</span>
+              ))}
+            </div>
+          )}
 
           <h1 style={{ 
             fontSize: 'clamp(2rem, 5vw, 3.5rem)', 

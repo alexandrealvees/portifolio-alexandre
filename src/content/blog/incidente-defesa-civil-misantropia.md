@@ -1,7 +1,7 @@
 ---
 title: "O alerta \"misantropia\": quando a Defesa Civil virou megafone de um atacante"
 category: "Segurança"
-date: "Jun 2026"
+date: "2026-06-18"
 image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80"
 tags: ["Incidente", "Infraestrutura Crítica", "Credenciais", "Defesa Civil", "OpSec"]
 ---

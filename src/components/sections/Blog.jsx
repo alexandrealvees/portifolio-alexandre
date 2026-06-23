@@ -4,14 +4,15 @@ import { FiArrowUpRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SectionWrapper from '../ui/SectionWrapper'
-import { getAllPosts } from '../../utils/mdxUtils'
+import { getAllPosts, formatPostDate } from '../../utils/mdxUtils'
 
 const posts = getAllPosts()
 
 /* ── Card com cursor "Read" magnético ─────────────────────────── */
 function BlogCard({ post, index }) {
   const cardRef = useRef(null)
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const locale = i18n.language.startsWith('pt') ? 'pt-BR' : 'en-US'
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false })
 
   const handleMouseMove = useCallback((e) => {
@@ -146,7 +147,7 @@ function BlogCard({ post, index }) {
             className="flex-shrink-0 text-gray-600 transition-all duration-300 group-hover/link:text-neon-cyan group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 mt-0.5"
           />
         </div>
-        <p className="text-gray-600 text-xs font-mono mt-2">{post.date}</p>
+        <p className="text-gray-600 text-xs font-mono mt-2">{formatPostDate(post.date, locale)}</p>
       </Link>
     </motion.article>
   )

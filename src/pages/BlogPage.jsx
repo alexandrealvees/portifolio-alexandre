@@ -1,18 +1,21 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowUpRight, FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import GrainOverlay from '../components/ui/GrainOverlay';
 import BackHeader from '../components/layout/BackHeader';
-import { getAllPosts } from '../utils/mdxUtils';
+import { getAllPosts, getAllCategories, getAllTags, formatPostDate } from '../utils/mdxUtils';
 
 const posts = getAllPosts();
+const categories = getAllCategories();
+const tags = getAllTags();
 
 /* ── Componente do Card (Reaproveitado do Blog.jsx) ─────────────────────────── */
 function BlogCard({ post, index }) {
   const cardRef = useRef(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language.startsWith('pt') ? 'pt-BR' : 'en-US';
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
 
   const handleMouseMove = useCallback((e) => {
@@ -135,7 +138,7 @@ function BlogCard({ post, index }) {
             className="flex-shrink-0 text-gray-600 transition-all duration-300 group-hover/link:text-neon-cyan group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 mt-0.5"
           />
         </div>
-        <p className="text-gray-600 text-xs font-mono mt-2">{post.date}</p>
+        <p className="text-gray-600 text-xs font-mono mt-2">{formatPostDate(post.date, locale)}</p>
       </Link>
     </motion.article>
   );
@@ -145,12 +148,36 @@ function BlogCard({ post, index }) {
 export default function BlogPage() {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeCategory, setActiveCategory] = useState('ALL');
+  const [activeTags, setActiveTags] = useState([]);
 
-  // Filtra os posts com base na busca
-  const filteredPosts = posts.filter(post => 
-    post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    post.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const toggleTag = (tag) => {
+    setActiveTags(prev => prev.includes(tag) ? prev.filter(x => x !== tag) : [...prev, tag]);
+  };
+
+  // Filtra por busca + categoria + tags (tags em modo OU).
+  const filteredPosts = useMemo(() => {
+    const term = searchTerm.toLowerCase();
+    return posts.filter(post => {
+      const matchesSearch =
+        post.title.toLowerCase().includes(term) ||
+        post.category.toLowerCase().includes(term) ||
+        post.tags.some(tag => tag.toLowerCase().includes(term));
+      const matchesCategory = activeCategory === 'ALL' || post.category === activeCategory;
+      const matchesTags = activeTags.length === 0 || activeTags.some(tag => post.tags.includes(tag));
+      return matchesSearch && matchesCategory && matchesTags;
+    });
+  }, [searchTerm, activeCategory, activeTags]);
+
+  const chipBase = {
+    fontSize: 12, fontFamily: 'monospace', cursor: 'pointer',
+    padding: '6px 14px', borderRadius: 999, transition: 'all 0.2s',
+    background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)',
+    color: 'rgba(255,255,255,0.6)',
+  };
+  const chipActive = {
+    background: 'rgba(0,212,255,0.12)', border: '1px solid rgba(0,212,255,0.5)', color: '#00d4ff',
+  };
 
   return (
     <div style={{ minHeight: '100vh', background: '#030014', color: '#e2e8f0', paddingBottom: 80 }}>
@@ -199,6 +226,43 @@ export default function BlogPage() {
               onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
             />
           </motion.div>
+        </div>
+
+        {/* FILTROS: CATEGORIAS + TAGS */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 48 }}>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
+            <button
+              onClick={() => setActiveCategory('ALL')}
+              style={activeCategory === 'ALL' ? { ...chipBase, ...chipActive } : chipBase}
+            >
+              {t('certpage.all')}
+            </button>
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                style={activeCategory === cat ? { ...chipBase, ...chipActive } : chipBase}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {tags.length > 0 && (
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
+              {tags.map(tag => (
+                <button
+                  key={tag}
+                  onClick={() => toggleTag(tag)}
+                  style={activeTags.includes(tag)
+                    ? { ...chipBase, ...chipActive, fontSize: 11, padding: '4px 11px' }
+                    : { ...chipBase, fontSize: 11, padding: '4px 11px' }}
+                >
+                  #{tag}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* GRID DE POSTS */}

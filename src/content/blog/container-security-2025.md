@@ -1,7 +1,7 @@
 ---
 title: "Container Security em 2025: Guia Prático para Identificar e Corrigir CVEs em Docker e Kubernetes"
 category: "AppSec"
-date: "Mar 2025"
+date: "2025-03-10"
 image: "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=600&q=80"
 tags: ["Docker", "Kubernetes", "DevSecOps", "CVE", "Security"]
 ---

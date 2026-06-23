@@ -1,8 +1,9 @@
 ---
 title: "Bug Bounty em 2025: Guia Realista para Começar do Zero ao Primeiro Bug"
 category: "AppSec"
-date: "Mar 2025"
+date: "2025-03-20"
 image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80"
+tags: ["Bug Bounty", "Recon", "Web", "Metodologia", "AppSec"]
 ---
 
 # Bug Bounty em 2025: Por onde começar (de verdade)
