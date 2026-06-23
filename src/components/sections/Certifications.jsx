@@ -7,13 +7,18 @@ import SectionWrapper from '../ui/SectionWrapper'
 import { certifications as allCerts } from '../../data/certifications'
 import { ORGS } from '../../data/orgs'
 
+// Os cards da home destacam apenas estas emissoras; a barra de "entidades
+// emissoras" e a página completa (/certificacoes) continuam com tudo.
+const HOME_ORGS = ['SOLYD', 'DESEC', 'HACKVISER']
+
 // View-model derivado da fonte única: a home usa o badge (sem imagem),
 // com label/cor/gradiente vindos da org.
-const certifications = allCerts.map(cert => {
+const allCertsVM = allCerts.map(cert => {
   const org = ORGS[cert.org]
   return {
     code: cert.code,
     name: cert.name,
+    org: cert.org,
     issuer: org.label,
     status: cert.status,
     color: org.color,
@@ -21,8 +26,11 @@ const certifications = allCerts.map(cert => {
   }
 })
 
-// Lista de emissores gerada dinamicamente a partir das certificações.
-const issuersMap = certifications.reduce((acc, cert) => {
+// Cards exibidos na home (subconjunto).
+const certifications = allCertsVM.filter(cert => HOME_ORGS.includes(cert.org))
+
+// Barra lateral de emissores: gerada a partir de TODAS as certificações.
+const issuersMap = allCertsVM.reduce((acc, cert) => {
   if (!acc[cert.issuer]) {
     acc[cert.issuer] = { name: cert.issuer, count: 0, gradient: cert.gradient }
   }
