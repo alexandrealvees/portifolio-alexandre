@@ -380,4 +380,13 @@ i18n
     }
   });
 
+// Mantém o atributo lang do <html> em sincronia com o idioma ativo (SEO/a11y).
+const applyHtmlLang = (lng) => {
+  if (typeof document !== 'undefined') {
+    document.documentElement.lang = lng.startsWith('pt') ? 'pt-BR' : 'en';
+  }
+};
+applyHtmlLang(i18n.language || 'pt');
+i18n.on('languageChanged', applyHtmlLang);
+
 export default i18n;
