@@ -232,7 +232,7 @@ export default function Education() {
             { value: t('edu.stat1_value'), label: t('edu.stat1_label') },
             { value: t('edu.stat2_value'), label: t('edu.stat2_label') },
             { value: t('edu.stat3_value'), label: t('edu.stat3_label') },
-          ].map((s, i) => (
+          ].map((s) => (
             <div
               key={s.label}
               className="glass-card rounded-2xl p-4 text-center"

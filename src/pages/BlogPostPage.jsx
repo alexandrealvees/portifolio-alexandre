@@ -92,17 +92,18 @@ export default function BlogPostPage() {
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
-              code({node, inline, className, children, ...props}) {
+              code({ inline, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || '')
                 return !inline && match ? (
                   <SyntaxHighlighter
                     {...props}
-                    children={String(children).replace(/\n$/, '')}
                     style={vscDarkPlus}
                     language={match[1]}
                     PreTag="div"
                     customStyle={{ borderRadius: 8, margin: '1.5em 0' }}
-                  />
+                  >
+                    {String(children).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
                 ) : (
                   <code {...props} className={className} style={{ background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: 4, color: '#8b5cf6', fontSize: '0.9em' }}>
                     {children}
