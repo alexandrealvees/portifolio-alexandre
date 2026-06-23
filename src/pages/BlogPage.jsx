@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowLeft, FiArrowUpRight, FiSearch } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import GrainOverlay from '../components/GrainOverlay';
 import { getAllPosts } from '../utils/mdxUtils';
 
@@ -10,6 +11,7 @@ const posts = getAllPosts();
 /* ── Componente do Card (Reaproveitado do Blog.jsx) ─────────────────────────── */
 function BlogCard({ post, index }) {
   const cardRef = useRef(null);
+  const { t } = useTranslation();
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
 
   const handleMouseMove = useCallback((e) => {
@@ -97,7 +99,7 @@ function BlogCard({ post, index }) {
                 fontFamily: 'monospace',
               }}
             >
-              Read
+              {t('blog.read_short')}
             </span>
           </div>
         </motion.div>
@@ -141,6 +143,7 @@ function BlogCard({ post, index }) {
 /* ── Página Principal do Blog ─────────────────────────────────────────────────── */
 export default function BlogPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
   // Filtra os posts com base na busca
@@ -175,7 +178,7 @@ export default function BlogPage() {
             onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
           >
             <FiArrowLeft size={14} />
-            Voltar
+            {t('common.back')}
           </button>
         </div>
       </div>
@@ -188,7 +191,7 @@ export default function BlogPage() {
             animate={{ opacity: 1, y: 0 }}
             style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, color: '#fff', fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            Terminal <span style={{ color: '#00d4ff' }}>Blog</span>
+            {t('blogpage.title_main')} <span style={{ color: '#00d4ff' }}>{t('blogpage.title_highlight')}</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -196,7 +199,7 @@ export default function BlogPage() {
             transition={{ delay: 0.1 }}
             style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 600, fontSize: '1.1rem' }}
           >
-            Artigos sobre Red Team, AppSec, Infraestrutura e metodologias ofensivas.
+            {t('blogpage.description')}
           </motion.p>
 
           <motion.div 
@@ -208,7 +211,7 @@ export default function BlogPage() {
             <FiSearch style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.4)' }} size={18} />
             <input 
               type="text"
-              placeholder="Buscar por título ou categoria..."
+              placeholder={t('blogpage.search_placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{
@@ -232,7 +235,7 @@ export default function BlogPage() {
           </div>
         ) : (
           <div style={{ textAlign: 'center', padding: '60px 0', color: 'rgba(255,255,255,0.4)' }}>
-            <p>Nenhum artigo encontrado para "{searchTerm}"</p>
+            <p>{t('blogpage.empty', { term: searchTerm })}</p>
           </div>
         )}
       </div>

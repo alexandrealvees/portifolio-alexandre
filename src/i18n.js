@@ -44,6 +44,32 @@ const resources = {
       "certs.validate_link": "Validar credencial oficial",
       "certs.no_image": "Sem imagem disponível",
 
+      // Common
+      "common.back": "Voltar",
+      "common.back_home": "Voltar para Home",
+
+      // Certifications page
+      "certpage.title": "Certificações",
+      "certpage.filter_org": "Organização:",
+      "certpage.sort_by": "Ordenar por:",
+      "certpage.all": "Todas",
+      "certpage.sort_org": "Organização",
+      "certpage.sort_date": "Data",
+      "certpage.sort_name": "Nome",
+      "certpage.count_one": "{{count}} certificação",
+      "certpage.count_other": "{{count}} certificações",
+      "certpage.expand": "Clique para expandir",
+      "certpage.validate": "Validar credencial",
+      "certpage.add_image": "Adicione a imagem em",
+
+      // Blog page
+      "blogpage.title_main": "Terminal",
+      "blogpage.title_highlight": "Blog",
+      "blogpage.description": "Artigos sobre Red Team, AppSec, Infraestrutura e metodologias ofensivas.",
+      "blogpage.search_placeholder": "Buscar por título ou categoria...",
+      "blogpage.empty": "Nenhum artigo encontrado para \"{{term}}\"",
+      "blogpost.not_found": "Post não encontrado",
+
       // Achievements / Conquistas
       "ach.title_label": "CONQUISTAS",
       "ach.title_main": "Conquistas em",
@@ -199,6 +225,32 @@ const resources = {
       "certs.status_active": "Active",
       "certs.validate_link": "Validate official credential",
       "certs.no_image": "No image available",
+
+      // Common
+      "common.back": "Back",
+      "common.back_home": "Back to Home",
+
+      // Certifications page
+      "certpage.title": "Certifications",
+      "certpage.filter_org": "Organization:",
+      "certpage.sort_by": "Sort by:",
+      "certpage.all": "All",
+      "certpage.sort_org": "Organization",
+      "certpage.sort_date": "Date",
+      "certpage.sort_name": "Name",
+      "certpage.count_one": "{{count}} certification",
+      "certpage.count_other": "{{count}} certifications",
+      "certpage.expand": "Click to expand",
+      "certpage.validate": "Validate credential",
+      "certpage.add_image": "Add the image at",
+
+      // Blog page
+      "blogpage.title_main": "Terminal",
+      "blogpage.title_highlight": "Blog",
+      "blogpage.description": "Articles on Red Team, AppSec, Infrastructure and offensive methodologies.",
+      "blogpage.search_placeholder": "Search by title or category...",
+      "blogpage.empty": "No articles found for \"{{term}}\"",
+      "blogpost.not_found": "Post not found",
 
       // Achievements
       "ach.title_label": "ACHIEVEMENTS",

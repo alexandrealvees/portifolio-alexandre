@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { FiArrowLeft, FiExternalLink, FiImage, FiFilter, FiCalendar } from 'react-icons/fi'
 import GrainOverlay from '../components/GrainOverlay'
 import { ORGS } from '../data/orgs'
@@ -9,6 +10,7 @@ import { certifications } from '../data/certifications'
 function CertCard({ cert, index }) {
   const [hovered, setHovered] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
+  const { t } = useTranslation()
   const org = ORGS[cert.org]
 
   return (
@@ -52,7 +54,7 @@ function CertCard({ cert, index }) {
             </div>
             <p className="text-[10px] font-mono text-center px-4 leading-relaxed"
               style={{ color: 'rgba(255,255,255,0.2)' }}>
-              Adicione a imagem em<br />
+              {t('certpage.add_image')}<br />
               <span style={{ color: org.color + 'aa' }}>src/images/certs/{cert.id}.jpg</span>
             </p>
           </div>
@@ -68,7 +70,7 @@ function CertCard({ cert, index }) {
               backdropFilter: 'blur(6px)',
             }}
           >
-            Em prep.
+            {t('certs.status_prep')}
           </div>
         )}
 
@@ -83,7 +85,7 @@ function CertCard({ cert, index }) {
               className="absolute inset-0 flex items-center justify-center text-white text-xs font-semibold"
               style={{ background: `${org.color}30`, backdropFilter: 'blur(4px)' }}
             >
-              Clique para expandir
+              {t('certpage.expand')}
             </motion.div>
           )}
         </AnimatePresence>
@@ -147,7 +149,7 @@ function CertCard({ cert, index }) {
                   }}
                 >
                   <FiExternalLink size={16} />
-                  Validar credencial
+                  {t('certpage.validate')}
                 </a>
               )}
             </div>
@@ -160,6 +162,7 @@ function CertCard({ cert, index }) {
 
 export default function CertificationsPage() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const [orgFilter, setOrgFilter] = useState('ALL')
   const [sortBy, setSortBy]       = useState('org')
 
@@ -207,7 +210,7 @@ export default function CertificationsPage() {
             onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
           >
             <FiArrowLeft size={14} />
-            Voltar
+            {t('common.back')}
           </button>
 
           <div style={{ flex: 1, textAlign: 'center' }}>
@@ -219,7 +222,7 @@ export default function CertificationsPage() {
                 background: 'linear-gradient(135deg,#00d4ff,#8b5cf6)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>
-                Certificações
+                {t('certpage.title')}
               </span>
             </h1>
           </div>
@@ -239,7 +242,7 @@ export default function CertificationsPage() {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 11, fontFamily: 'monospace', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-              Organização:
+              {t('certpage.filter_org')}
             </span>
             <select
               value={orgFilter}
@@ -250,7 +253,7 @@ export default function CertificationsPage() {
                 fontSize: 11, fontFamily: 'monospace', cursor: 'pointer', outline: 'none',
               }}
             >
-              <option value="ALL">All</option>
+              <option value="ALL">{t('certpage.all')}</option>
               {Object.entries(ORGS).map(([key, val]) => (
                 <option key={key} value={key}>{val.label}</option>
               ))}
@@ -261,7 +264,7 @@ export default function CertificationsPage() {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 11, fontFamily: 'monospace', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-              Ordenar por:
+              {t('certpage.sort_by')}
             </span>
             <select
               value={sortBy}
@@ -272,15 +275,15 @@ export default function CertificationsPage() {
                 fontSize: 11, fontFamily: 'monospace', cursor: 'pointer', outline: 'none',
               }}
             >
-              <option value="org">Organização</option>
-              <option value="date">Data</option>
-              <option value="name">Nome</option>
+              <option value="org">{t('certpage.sort_org')}</option>
+              <option value="date">{t('certpage.sort_date')}</option>
+              <option value="name">{t('certpage.sort_name')}</option>
             </select>
           </div>
 
           <div style={{ marginLeft: 'auto' }}>
             <span style={{ fontSize: 11, fontFamily: 'monospace', color: 'rgba(255,255,255,0.25)' }}>
-              {filtered.length} certificação{filtered.length !== 1 ? 'ões' : ''}
+              {t('certpage.count', { count: filtered.length })}
             </span>
           </div>
         </div>

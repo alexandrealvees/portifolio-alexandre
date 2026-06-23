@@ -4,23 +4,25 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FiArrowLeft, FiCalendar, FiTag } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 import GrainOverlay from '../components/GrainOverlay';
 import { getPostBySlug } from '../utils/mdxUtils';
 
 export default function BlogPostPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const post = getPostBySlug(slug);
 
   if (!post) {
     return (
       <div style={{ minHeight: '100vh', background: '#030014', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: 16 }}>Post não encontrado</h1>
+        <h1 style={{ fontSize: '3rem', marginBottom: 16 }}>{t('blogpost.not_found')}</h1>
         <button 
           onClick={() => navigate('/blog')}
           style={{ padding: '10px 20px', background: 'rgba(255,255,255,0.1)', borderRadius: 8, color: '#fff', border: 'none', cursor: 'pointer' }}
         >
-          Voltar para Home
+          {t('common.back_home')}
         </button>
       </div>
     );
@@ -52,7 +54,7 @@ export default function BlogPostPage() {
             onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
           >
             <FiArrowLeft size={14} />
-            Voltar
+            {t('common.back')}
           </button>
         </div>
       </div>
