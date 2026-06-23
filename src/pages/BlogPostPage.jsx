@@ -5,8 +5,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FiCalendar, FiTag } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
-import GrainOverlay from '../components/GrainOverlay';
-import BackHeader from '../components/BackHeader';
+import GrainOverlay from '../components/ui/GrainOverlay';
+import BackHeader from '../components/layout/BackHeader';
 import { getPostBySlug } from '../utils/mdxUtils';
 
 export default function BlogPostPage() {

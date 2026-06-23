@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { FiArrowUpRight, FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import GrainOverlay from '../components/GrainOverlay';
-import BackHeader from '../components/BackHeader';
+import GrainOverlay from '../components/ui/GrainOverlay';
+import BackHeader from '../components/layout/BackHeader';
 import { getAllPosts } from '../utils/mdxUtils';
 
 const posts = getAllPosts();

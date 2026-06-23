@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FiBookOpen, FiCalendar, FiAward } from 'react-icons/fi'
 import { useTranslation } from 'react-i18next'
-import SectionWrapper from './SectionWrapper'
+import SectionWrapper from '../ui/SectionWrapper'
 
 const degrees = [
   {

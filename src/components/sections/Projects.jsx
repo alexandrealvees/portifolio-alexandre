@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { FiExternalLink, FiGithub, FiArrowUpRight } from 'react-icons/fi'
-import SectionWrapper from './SectionWrapper'
+import SectionWrapper from '../ui/SectionWrapper'
 
 const projects = [
   {

@@ -1,17 +1,17 @@
 import { lazy, Suspense } from 'react'
-import ErrorBoundary from './components/ErrorBoundary'
-import GrainOverlay from './components/GrainOverlay'
-import Hero from './components/Hero'
-import Footer from './components/Footer'
+import ErrorBoundary from './components/ui/ErrorBoundary'
+import GrainOverlay from './components/ui/GrainOverlay'
+import Hero from './components/sections/Hero'
+import Footer from './components/layout/Footer'
 
-const About = lazy(() => import('./components/About'))
-const Certifications = lazy(() => import('./components/Certifications'))
-const Achievements = lazy(() => import('./components/Achievements'))
-const Interests = lazy(() => import('./components/Interests'))
-const TechSkills = lazy(() => import('./components/TechSkills'))
-const Education = lazy(() => import('./components/Education'))
-const Blog = lazy(() => import('./components/Blog'))
-const Experience = lazy(() => import('./components/Experience'))
+const About = lazy(() => import('./components/sections/About'))
+const Certifications = lazy(() => import('./components/sections/Certifications'))
+const Achievements = lazy(() => import('./components/sections/Achievements'))
+const Interests = lazy(() => import('./components/sections/Interests'))
+const TechSkills = lazy(() => import('./components/sections/TechSkills'))
+const Education = lazy(() => import('./components/sections/Education'))
+const Blog = lazy(() => import('./components/sections/Blog'))
+const Experience = lazy(() => import('./components/sections/Experience'))
 
 function LoadingFallback() {
   return (

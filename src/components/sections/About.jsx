@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { FiArrowRight } from 'react-icons/fi'
-import SectionWrapper from './SectionWrapper'
+import SectionWrapper from '../ui/SectionWrapper'
 import { useTranslation } from 'react-i18next'
 
 export default function About() {

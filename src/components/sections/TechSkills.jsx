@@ -6,7 +6,7 @@ import {
 } from 'react-icons/si'
 import { FiCode, FiTool, FiBookOpen, FiStar, FiCpu, FiTerminal, FiZap } from 'react-icons/fi'
 import { DiJava } from 'react-icons/di'
-import SectionWrapper from './SectionWrapper'
+import SectionWrapper from '../ui/SectionWrapper'
 import { useTranslation } from 'react-i18next'
 
 /* ─── dados ─────────────────────────────────────────────────── */

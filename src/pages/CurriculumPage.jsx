@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import GrainOverlay from '../components/GrainOverlay'
+import GrainOverlay from '../components/ui/GrainOverlay'
 const cvPtHref = new URL('../curriculum/cv-pt.pdf', import.meta.url).href
 const cvEnHref = new URL('../curriculum/cv-en.pdf', import.meta.url).href
 const documents = [

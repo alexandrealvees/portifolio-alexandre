@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FiAward, FiX, FiZoomIn } from 'react-icons/fi'
 import { useTranslation } from 'react-i18next'
-import SectionWrapper from './SectionWrapper'
-import { achievements } from '../data/achievements'
+import SectionWrapper from '../ui/SectionWrapper'
+import { achievements } from '../../data/achievements'
 
 function AchievementCard({ item, index, onOpen }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })

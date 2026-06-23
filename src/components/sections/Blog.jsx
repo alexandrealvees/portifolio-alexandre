@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 import { FiArrowUpRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import SectionWrapper from './SectionWrapper'
-import { getAllPosts } from '../utils/mdxUtils'
+import SectionWrapper from '../ui/SectionWrapper'
+import { getAllPosts } from '../../utils/mdxUtils'
 
 const posts = getAllPosts()
 

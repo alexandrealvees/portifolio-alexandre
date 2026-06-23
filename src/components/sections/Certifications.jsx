@@ -3,9 +3,9 @@ import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
 import { FiAward, FiCheckCircle, FiClock, FiArrowRight } from 'react-icons/fi'
 import { useTranslation } from 'react-i18next'
-import SectionWrapper from './SectionWrapper'
-import { certifications as allCerts } from '../data/certifications'
-import { ORGS } from '../data/orgs'
+import SectionWrapper from '../ui/SectionWrapper'
+import { certifications as allCerts } from '../../data/certifications'
+import { ORGS } from '../../data/orgs'
 
 // View-model derivado da fonte única: a home usa o badge (sem imagem),
 // com label/cor/gradiente vindos da org.

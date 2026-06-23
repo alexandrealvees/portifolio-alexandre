@@ -1,8 +1,8 @@
 import { FiUser } from 'react-icons/fi'
 import { useTranslation } from 'react-i18next';
-import Navbar from './Navbar'
-import bgImage from '../images/background.jpg'
-import avatarImage from '../images/profile/profile.png'
+import Navbar from '../layout/Navbar'
+import bgImage from '../../images/background.jpg'
+import avatarImage from '../../images/profile/profile.png'
 
 const marqueeTextTop = Array(10).fill('RED TEAM • PENTESTING • CYBER THREAT • MALWARE ').join('')
 const marqueeTextBot = Array(10).fill('CYBER THREAT • FORENSICS • ENGENHARIA DE SOFTWARE • ').join('')
