@@ -26,8 +26,10 @@ const allCertsVM = allCerts.map(cert => {
   }
 })
 
-// Cards exibidos na home (subconjunto).
-const certifications = allCertsVM.filter(cert => HOME_ORGS.includes(cert.org))
+// Cards exibidos na home (subconjunto), ordenados por nome.
+const certifications = allCertsVM
+  .filter(cert => HOME_ORGS.includes(cert.org))
+  .sort((a, b) => a.name.localeCompare(b.name))
 
 // Barra lateral de emissores: gerada a partir de TODAS as certificações.
 const issuersMap = allCertsVM.reduce((acc, cert) => {
