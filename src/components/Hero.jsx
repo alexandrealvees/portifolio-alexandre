@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom'
-import { FiGithub, FiLinkedin, FiMail, FiUser, FiGlobe } from 'react-icons/fi'
-import { GiRobotGolem } from "react-icons/gi";
+import { FiUser } from 'react-icons/fi'
 import { useTranslation } from 'react-i18next';
+import Navbar from './Navbar'
 import bgImage from '../images/background.jpg'
 import avatarImage from '../images/profile/profile.png'
 
@@ -9,21 +8,8 @@ const marqueeTextTop = Array(10).fill('RED TEAM • PENTESTING • CYBER THREAT 
 const marqueeTextBot = Array(10).fill('CYBER THREAT • FORENSICS • ENGENHARIA DE SOFTWARE • ').join('')
 
 export default function Hero() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  const NAV_LINKS = [
-    { label: t('nav.home'), id: 'home' },
-    { label: t('nav.about'), id: 'sobre' },
-    { label: t('nav.skills'), id: 'habilidades' },
-    { label: t('nav.experience'), id: 'experience' },
-    { label: t('nav.certifications'), id: 'certificacoes' },
-    { label: t('nav.achievements'), id: 'conquistas' }
-  ]
-
-  const toggleLanguage = () => {
-    const newLang = i18n.language.startsWith('pt') ? 'en' : 'pt';
-    i18n.changeLanguage(newLang);
-  };
   return (
     <section
       id="home"
@@ -36,87 +22,7 @@ export default function Hero() {
         backgroundColor: '#030014',
       }}
     >
-      <nav style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '20px 56px',
-        background: 'rgba(3,0,20,0.85)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255,255,255,0.05)',
-      }}>
-        <div></div>
-
-        <div style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
-          {NAV_LINKS.map(link => (
-            <a key={link.id} href={`#${link.id}`} style={{
-              color: 'rgba(255,255,255,0.6)', textDecoration: 'none',
-              fontSize: 11, fontWeight: 600, letterSpacing: '0.18em',
-              textTransform: 'uppercase', transition: 'color 0.2s',
-            }}
-              onMouseEnter={e => e.target.style.color = '#fff'}
-              onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.6)'}
-            >{link.label}</a>
-          ))}
-          <Link to="/blog" style={{
-            color: 'rgba(255,255,255,0.6)', textDecoration: 'none',
-            fontSize: 11, fontWeight: 600, letterSpacing: '0.18em',
-            textTransform: 'uppercase', transition: 'color 0.2s',
-          }}
-            onMouseEnter={e => e.target.style.color = '#fff'}
-            onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.6)'}
-          >{t('nav.blog')}</Link>
-          <Link to="/curriculum" style={{
-            color: 'rgba(255,255,255,0.6)', textDecoration: 'none',
-            fontSize: 11, fontWeight: 600, letterSpacing: '0.18em',
-            textTransform: 'uppercase', transition: 'color 0.2s',
-          }}
-            onMouseEnter={e => e.target.style.color = '#fff'}
-            onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.6)'}
-          >{t('nav.curriculum')}</Link>
-        </div>
-
-        <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-           <GiRobotGolem className="text-neon-purple" size={20} />
-          {[
-            { icon: FiGithub, href: 'https://github.com/alexandrealvees', label: 'GitHub' },
-            { icon: FiLinkedin, href: 'https://linkedin.com/in/alexandre-alvees', label: 'LinkedIn' },
-            { icon: FiMail, href: 'mailto:contato@alexandrealves.dev', label: 'Email' },
-          ].map(({ icon: Icon, href, label }) => (
-            <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-              style={{ color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#00d4ff'}
-              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
-            ><Icon size={18} /></a>
-          ))}
-          
-          {/* Botão de Tradução */}
-          <button 
-            onClick={toggleLanguage}
-            title={i18n.language.startsWith('pt') ? "Translate to English" : "Traduzir para Português"}
-            style={{ 
-              background: 'none', border: 'none', padding: 0, cursor: 'pointer',
-              color: 'rgba(255,255,255,0.5)', transition: 'color 0.2s',
-              display: 'flex', alignItems: 'center', marginLeft: 4
-            }}
-            onMouseEnter={e => e.currentTarget.style.color = '#00d4ff'}
-            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
-          >
-            <FiGlobe size={18} />
-            <span style={{ fontSize: 10, marginLeft: 4, fontWeight: 'bold', fontFamily: 'monospace' }}>
-              {i18n.language.startsWith('pt') ? 'EN' : 'PT'}
-            </span>
-          </button>
-
-          <GiRobotGolem className="text-neon-purple" size={20} />
-
-        </div>
-      </nav>
+      <Navbar />
 
       {/* ── MARQUEE SUPERIOR ───────────────────────────────────── */}
       <div style={{

@@ -3,9 +3,10 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { FiArrowLeft, FiCalendar, FiTag } from 'react-icons/fi';
+import { FiCalendar, FiTag } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 import GrainOverlay from '../components/GrainOverlay';
+import BackHeader from '../components/BackHeader';
 import { getPostBySlug } from '../utils/mdxUtils';
 
 export default function BlogPostPage() {
@@ -31,33 +32,8 @@ export default function BlogPostPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#030014', color: '#e2e8f0', paddingBottom: 80 }}>
       <GrainOverlay />
-      
-      {/* HEADER NAVBAR */}
-      <div style={{
-        position: 'sticky', top: 0, zIndex: 50,
-        background: 'rgba(3,0,20,0.85)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-      }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', padding: '14px 24px', display: 'flex', alignItems: 'center' }}>
-          <button
-            onClick={() => navigate('/blog')}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 8,
-              color: 'rgba(255,255,255,0.5)', background: 'none',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: 10, padding: '8px 14px',
-              fontSize: 12, fontFamily: 'monospace', cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = 'rgba(0,212,255,0.4)' }}
-            onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
-          >
-            <FiArrowLeft size={14} />
-            {t('common.back')}
-          </button>
-        </div>
-      </div>
+
+      <BackHeader backTo="/blog" maxWidth={800} />
 
       <article style={{ maxWidth: 768, margin: '0 auto', padding: '40px 24px' }}>
         

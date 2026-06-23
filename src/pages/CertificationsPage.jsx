@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { FiArrowLeft, FiExternalLink, FiImage, FiFilter, FiCalendar } from 'react-icons/fi'
+import { FiExternalLink, FiImage, FiFilter, FiCalendar } from 'react-icons/fi'
 import GrainOverlay from '../components/GrainOverlay'
+import BackHeader from '../components/BackHeader'
 import { ORGS } from '../data/orgs'
 import { certifications } from '../data/certifications'
 
@@ -161,7 +161,6 @@ function CertCard({ cert, index }) {
 }
 
 export default function CertificationsPage() {
-  const navigate = useNavigate()
   const { t } = useTranslation()
   const [orgFilter, setOrgFilter] = useState('ALL')
   const [sortBy, setSortBy]       = useState('org')
@@ -188,48 +187,7 @@ export default function CertificationsPage() {
     <div style={{ minHeight: '100vh', background: '#030014', color: '#fff' }}>
       <GrainOverlay />
 
-      {/* ── HEADER ─────────────────────────────────────────────── */}
-      <div style={{
-        position: 'sticky', top: 0, zIndex: 50,
-        background: 'rgba(3,0,20,0.85)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-      }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: 20 }}>
-          <button
-            onClick={() => navigate('/')}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 8,
-              color: 'rgba(255,255,255,0.5)', background: 'none',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: 10, padding: '8px 14px',
-              fontSize: 12, fontFamily: 'monospace', cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = 'rgba(0,212,255,0.4)' }}
-            onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
-          >
-            <FiArrowLeft size={14} />
-            {t('common.back')}
-          </button>
-
-          <div style={{ flex: 1, textAlign: 'center' }}>
-            <h1 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, margin: 0 }}>
-              <span style={{ fontSize: 22 }}>🎓</span>
-              <span style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontWeight: 700, fontSize: 22,
-                background: 'linear-gradient(135deg,#00d4ff,#8b5cf6)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-              }}>
-                {t('certpage.title')}
-              </span>
-            </h1>
-          </div>
-
-          <div style={{ width: 80 }} />
-        </div>
-      </div>
+      <BackHeader maxWidth={1280} title={t('certpage.title')} emoji="🎓" />
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '28px 32px 0' }}>
         <div style={{
