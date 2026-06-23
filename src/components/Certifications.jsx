@@ -4,248 +4,32 @@ import { Link } from 'react-router-dom'
 import { FiAward, FiCheckCircle, FiClock, FiArrowRight } from 'react-icons/fi'
 import { useTranslation } from 'react-i18next'
 import SectionWrapper from './SectionWrapper'
+import { certifications as allCerts } from '../data/certifications'
+import { ORGS } from '../data/orgs'
 
-
-const certifications = [
-  {
-    code: 'CNPen',
-    name: 'Certified Network Pentester',
-    issuer: 'SecOps Group',
-    status: 'active',
-    color: '#ec4899',
-    gradient: 'linear-gradient(135deg,#ec4899,#f43f5e)',
-  },
-  {
-    code: 'CAPen',
-    name: 'Certified AppSec Pentester',
-    issuer: 'SecOps Group',
-    status: 'active',
-    color: '#ec4899',
-    gradient: 'linear-gradient(135deg,#ec4899,#f43f5e)',
-  },
-  {
-    code: 'CAIMLPen',
-    name: 'Certified AI/ML Pentester',
-    issuer: 'SecOps Group',
-    status: 'active',
-    color: '#ec4899',
-    gradient: 'linear-gradient(135deg,#ec4899,#f43f5e)',
-  },
-  {
-    code: 'CAgAIPen',
-    name: 'Certified Agentic AI Pentester',
-    issuer: 'SecOps Group',
-    status: 'active',
-    color: '#ec4899',
-    gradient: 'linear-gradient(135deg,#ec4899,#f43f5e)',
-  },
-  {
-    code: 'SYCP',
-    name: 'Solyd Certified Pentester',
-    issuer: 'Solyd Offensive Security',
-    status: 'active',
-    color: '#00d4ff',
-    gradient: 'linear-gradient(135deg,#00d4ff,#3b82f6)',
-  },
-  {
-    code: 'SYH2',
-    name: 'Solyd Hardware Hacker',
-    issuer: 'Solyd Offensive Security',
-    status: 'active',
-    color: '#00d4ff',
-    gradient: 'linear-gradient(135deg,#00d4ff,#3b82f6)',
-  },
-  {
-    code: 'SYWP',
-    name: 'Solyd Wireless Pentester',
-    issuer: 'Solyd Offensive Security',
-    status: 'active',
-    color: '#00d4ff',
-    gradient: 'linear-gradient(135deg,#00d4ff,#3b82f6)',
-  },
-  {
-    code: 'DCPT',
-    name: 'Desec Certified Penetration Tester',
-    issuer: 'Desec Security',
-    status: 'active',
-    color: '#f59e0b',
-    gradient: 'linear-gradient(135deg,#f59e0b,#fbbf24)',
-  },
-  {
-    code: 'CRTA',
-    name: 'Certified Red Team Analyst',
-    issuer: 'Cyber Warfare Labs',
-    status: 'active',
-    color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  },
-  {
-    code: 'CRT-ID',
-    name: 'Certified Red Team Infra Dev',
-    issuer: 'Cyber Warfare Labs',
-    status: 'active',
-    color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  },
-  {
-    code: 'CRT-COI',
-    name: 'Certified Red Team CredOps Infiltrator',
-    issuer: 'Cyber Warfare Labs',
-    status: 'active',
-    color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  },
-  {
-    code: 'AD-RTS',
-    name: 'Active Directory Red Team Specialist',
-    issuer: 'Cyber Warfare Labs',
-    status: 'active',
-    color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  },
-  {
-    code: 'API-RTA',
-    name: 'API Red Team Analyst',
-    issuer: 'Cyber Warfare Labs',
-    status: 'active',
-    color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  },
-  {
-    code: 'C3SA',
-    name: 'Cyber Security Analyst',
-    issuer: 'Cyber Warfare Labs',
-    status: 'active',
-    color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  },
-  {
-    code: 'MBCTA',
-    name: 'Multi-cloud Blue Team Analyst',
-    issuer: 'Cyber Warfare Labs',
-    status: 'active',
-    color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  },
-  {
-    code: 'MCRTA',
-    name: 'Multi-cloud Red Team Analyst',
-    issuer: 'Cyber Warfare Labs',
-    status: 'active',
-    color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  },
-  {
-    code: 'WEB-RTA',
-    name: 'Web Red Team Analyst',
-    issuer: 'Cyber Warfare Labs',
-    status: 'active',
-    color: '#8b5cf6',
-    gradient: 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  },
-  {
-    code: 'CAPT',
-    name: 'Certified AppSec Pentester',
-    issuer: 'Hackviser',
-    status: 'active',
-    color: '#f43f5e',
-    gradient: 'linear-gradient(135deg,#f43f5e,#fb923c)',
-  },
-  {
-    code: 'CWSE',
-    name: 'Certified Web Security Expert',
-    issuer: 'Hackviser',
-    status: 'active',
-    color: '#f43f5e',
-    gradient: 'linear-gradient(135deg,#f43f5e,#fb923c)',
-  },
-  {
-    code: 'CSOA',
-    name: 'Certified Security Operations Analyst',
-    issuer: 'Hackviser',
-    status: 'active',
-    color: '#f43f5e',
-    gradient: 'linear-gradient(135deg,#f43f5e,#fb923c)',
-  },
-  {
-    code: 'eJPTv2',
-    name: 'Junior Penetration Tester v2',
-    issuer: 'INE Security',
-    status: 'active',
-    color: '#10b981',
-    gradient: 'linear-gradient(135deg,#10b981,#34d399)',
-  },
-  {
-    code: 'AZ-900',
-    name: 'Fundamentos do Microsoft Azure',
-    issuer: 'MICROSOFT',
-    status: 'active',
-    color: '#1621b8',
-    gradient: 'linear-gradient(135deg,#1621b8,#3b82f6)',
-  },
-  {
-    code: 'SC-900',
-    name: 'Fundamentos de segurança, conformidade e identidade da Microsoft',
-    issuer: 'MICROSOFT',
-    status: 'active',
-    color: '#1621b8',
-    gradient: 'linear-gradient(135deg,#1621b8,#3b82f6)',
-  },
-  {
-    code: 'AWS',
-    name: 'Certified Cloud Practitioner',
-    issuer: 'AWS',
-    status: 'active',
-    color: '#678685',
-    gradient: 'linear-gradient(135deg,#678685,#9ca3af)',
-  },
-  {
-    code: 'EHMDE',
-    name: 'Ethical Hacking Malware Development Essentials',
-    issuer: 'GoHacking',
-    status: 'active',
-    color: '#6366f1',
-    gradient: 'linear-gradient(135deg,#6366f1,#818cf8)',
-  },
-  {
-    code: 'EHREM',
-    name: 'Ethical Hacking Reverse Engineering Essentials',
-    issuer: 'GoHacking',
-    status: 'active',
-    color: '#6366f1',
-    gradient: 'linear-gradient(135deg,#6366f1,#818cf8)',
+// View-model derivado da fonte única: a home usa o badge (sem imagem),
+// com label/cor/gradiente vindos da org.
+const certifications = allCerts.map(cert => {
+  const org = ORGS[cert.org]
+  return {
+    code: cert.code,
+    name: cert.name,
+    issuer: org.label,
+    status: cert.status,
+    color: org.color,
+    gradient: org.gradient,
   }
-]
+})
 
-const issuerStyles = {
-  'Cyber Warfare Labs': 'linear-gradient(135deg,#8b5cf6,#d946ef)',
-  'SecOps Group': 'linear-gradient(135deg,#ec4899,#f43f5e)',
-  'Hackviser': 'linear-gradient(135deg,#f43f5e,#fb923c)',
-  'MICROSOFT': 'linear-gradient(135deg,#1621b8,#3b82f6)',
-  'INE Security': 'linear-gradient(135deg,#10b981,#34d399)',
-  'AWS': 'linear-gradient(135deg,#678685,#9ca3af)',
-  'GoHacking': 'linear-gradient(135deg,#6366f1,#818cf8)',
-  'Solyd Offensive Security': 'linear-gradient(135deg,#00d4ff,#3b82f6)',
-  'Desec Security': 'linear-gradient(135deg,#f59e0b,#fbbf24)',
-}
-
-// Gera a lista de emissores dinamicamente com base no array de certificações
+// Lista de emissores gerada dinamicamente a partir das certificações.
 const issuersMap = certifications.reduce((acc, cert) => {
-  const name = cert.issuer === 'MICROSOFT' ? 'Microsoft' : cert.issuer;
-  const key = cert.issuer;
-  
-  if (!acc[key]) {
-    acc[key] = {
-      name: name,
-      count: 0,
-      gradient: issuerStyles[key] || 'linear-gradient(135deg,#6b7280,#9ca3af)', // fallback
-    }
+  if (!acc[cert.issuer]) {
+    acc[cert.issuer] = { name: cert.issuer, count: 0, gradient: cert.gradient }
   }
-  acc[key].count += 1;
-  return acc;
+  acc[cert.issuer].count += 1
+  return acc
 }, {})
 
-// Converte o mapa de volta para array e ordena por quantidade (opcional)
 const issuers = Object.values(issuersMap).sort((a, b) => b.count - a.count)
 
 function CertCard({ cert, index }) {
